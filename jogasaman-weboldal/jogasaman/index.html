@@ -1,0 +1,1231 @@
+<!doctype html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Jógasámán · Gauranga Das</title>
+</head>
+<body>
+
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Manrope:wght@300;400;500;600&display=swap">
+<style>
+/* Layout: an evening ceremony. Warm obsidian ground, bone-white type, one ember accent. A shaman drum (concentric rings)
+   is the recurring figure: it breathes in the opening, carries the ten-step journey as a circle, and frames the bio.
+   Long centred statements alternate with index-style lists; one bone-coloured band (the teacher) gives the page daylight. */
+:root{
+  --night:#110F0D;
+  --soil:#181512;
+  --ash:#221E1A;
+  --bone:#EEE7DB;
+  --bone-2:#B4AA9A;
+  --bone-3:#7E766A;
+  --ember:#D27A42;
+  --ember-2:#E9A06A;
+  --gold:#C2A46C;
+  --ink:#1B1713;
+  --ink-2:#5C5348;
+  --line:rgba(238,231,219,.13);
+  --line-ink:rgba(27,23,19,.14);
+  --f-display:"Cormorant Garamond","Cormorant",Georgia,"Times New Roman",serif;
+  --f-body:"Manrope","Helvetica Neue",Arial,sans-serif;
+  --gl:max(24px, env(safe-area-inset-left, 0px));
+  --gr:max(24px, env(safe-area-inset-right, 0px));
+  --ease:cubic-bezier(.16,1,.3,1);
+  --ease-io:cubic-bezier(.76,0,.24,1);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--night);color:var(--bone);font-family:var(--f-body);font-weight:300;font-variant-numeric:lining-nums;font-size:16.5px;line-height:1.72;-webkit-font-smoothing:antialiased;overflow-x:clip}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--night)}
+a{color:inherit}
+button{font:inherit;color:inherit;cursor:pointer}
+b,strong{font-weight:500}
+:focus-visible{outline:1.5px solid var(--ember-2);outline-offset:3px}
+h1,h2,h3,h4{font-family:var(--f-display);font-weight:300;margin:0;text-wrap:balance;letter-spacing:-.01em;line-height:1.02}
+em{font-style:italic;font-family:var(--f-display)}
+p{margin:0}
+.wrap{max-width:1360px;margin:0 auto;padding-left:var(--gl);padding-right:var(--gr)}
+.eyebrow{display:inline-flex;align-items:center;gap:14px;font-size:.74rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+.eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;border:1px solid currentColor}
+.light .eyebrow{color:#8A6F3E}
+
+/* buttons */
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:12px;border:0;border-radius:999px;padding:16px 30px;font-family:var(--f-body);font-weight:500;font-size:.88rem;letter-spacing:.04em;text-decoration:none;white-space:nowrap;overflow:hidden;isolation:isolate;transition:color .5s var(--ease),box-shadow .5s}
+.btn::after{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;transform:scale(0);transition:transform .7s var(--ease)}
+.btn:hover::after{transform:scale(1.02)}
+.btn-ember{background:var(--ember);color:#1A0F08}
+.btn-ember::after{background:var(--bone)}
+.btn-ring{color:var(--bone);box-shadow:inset 0 0 0 1px rgba(238,231,219,.4)}
+.btn-ring::after{background:var(--bone)}
+.btn-ring:hover{color:var(--ink)}
+.btn-ink{background:var(--ink);color:var(--bone)}
+.btn-ink::after{background:var(--ember)}
+.btn-ink:hover{color:#1A0F08}
+.btn-ink-ring{color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.btn-ink-ring::after{background:var(--ink)}
+.btn-ink-ring:hover{color:var(--bone)}
+.btn[disabled]{opacity:.4;pointer-events:none}
+.arrow{width:18px;height:10px;flex:none}
+.u{position:relative;text-decoration:none;padding-bottom:2px;background:linear-gradient(currentColor,currentColor) 0 100%/100% 1px no-repeat;transition:background-size .6s var(--ease)}
+.u:hover{background-size:0 1px;background-position:100% 100%}
+
+/* reveals */
+.split .ln{display:inline-block;overflow:hidden;vertical-align:top;padding:.04em 0 .14em;margin:-.04em 0 -.14em}
+.split .wi{display:inline-block}
+.js .split:not(.in) .wi{transform:translate3d(0,115%,0)}
+.js .split .wi{transition:transform 1.5s var(--ease) calc(var(--i,0) * 38ms)}
+.js .fade:not(.in){opacity:0;transform:translate3d(0,24px,0)}
+.js .fade{transition:opacity 1.4s var(--ease) var(--d,0s),transform 1.4s var(--ease) var(--d,0s)}
+
+/* ---------- Nav ---------- */
+.nav{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:50;transition:background .6s,transform .7s var(--ease),box-shadow .6s}
+.nav.solid{background:rgba(17,15,13,.84);backdrop-filter:blur(18px) saturate(120%);-webkit-backdrop-filter:blur(18px) saturate(120%);box-shadow:0 1px 0 var(--line)}
+.nav.hide{transform:translateY(-100%)}
+.nav .wrap{display:flex;align-items:center;gap:36px;height:84px}
+.brand{display:flex;align-items:center;gap:14px;text-decoration:none}
+.brand svg{width:34px;height:34px;flex:none}
+.brand b{display:block;font-family:var(--f-display);font-weight:400;font-size:1.6rem;line-height:1;letter-spacing:.01em}
+.brand small{display:block;font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;color:var(--bone-2);margin-top:3px}
+.nav ul{display:flex;gap:28px;list-style:none;margin:0 0 0 auto;padding:0}
+.nav ul a{text-decoration:none;font-size:.84rem;letter-spacing:.03em;color:var(--bone-2);transition:color .4s}
+.nav ul a:hover{color:var(--bone)}
+.nav .btn{padding:12px 22px;font-size:.8rem}
+.burger{display:none;margin-left:12px;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:transparent;align-items:center;justify-content:center;flex-direction:column;gap:6px}
+.burger i{width:16px;height:1px;background:var(--bone);transition:transform .6s var(--ease)}
+.burger[aria-expanded="true"] i:first-child{transform:translateY(3.5px) rotate(45deg)}
+.burger[aria-expanded="true"] i:last-child{transform:translateY(-3.5px) rotate(-45deg)}
+@media (max-width:1100px){.nav ul{display:none}.nav .btn{margin-left:auto}.burger{display:flex}}
+@media (max-width:600px){.nav .btn{display:none}.burger{margin-left:auto}}
+.menu{position:fixed;inset:0;z-index:45;background:var(--soil);display:flex;flex-direction:column;justify-content:flex-end;padding:120px var(--gr) calc(40px + env(safe-area-inset-bottom,0px)) var(--gl);clip-path:circle(0 at calc(100% - 46px) 42px);transition:clip-path 1s var(--ease-io);visibility:hidden}
+.menu.open{clip-path:circle(150% at calc(100% - 46px) 42px);visibility:visible}
+.menu ul{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+.menu a{font-family:var(--f-display);font-size:clamp(2.4rem,10vw,3.8rem);line-height:1.1;text-decoration:none}
+.menu a i{font-family:var(--f-body);font-style:normal;font-size:.75rem;color:var(--gold);margin-right:14px;vertical-align:middle}
+.menu p{margin-top:30px;color:var(--bone-2);font-size:.9rem}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;min-height:100vh;min-height:100svh;display:grid;align-items:end;overflow:hidden;cursor:default;
+  background:radial-gradient(90% 70% at 72% 40%,#2A1F17 0%,#17130F 46%,var(--night) 78%)}
+.glow{position:absolute;left:0;top:0;width:620px;height:620px;margin:-310px 0 0 -310px;border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle,rgba(210,122,66,.22) 0%,rgba(210,122,66,.07) 38%,rgba(210,122,66,0) 70%);transform:translate3d(var(--gx,70vw),var(--gy,40vh),0);transition:opacity 1s;will-change:transform}
+.drum{position:absolute;right:max(-6vw,-80px);top:50%;width:min(78vh,820px);aspect-ratio:1;transform:translateY(-54%);pointer-events:none}
+.drum svg{width:100%;height:100%;overflow:visible}
+.drum .r{fill:none;stroke:rgba(238,231,219,.16);stroke-width:1;vector-effect:non-scaling-stroke;transform-origin:50% 50%;transform-box:view-box}
+.drum .r.e{stroke:rgba(210,122,66,.55)}
+.drum .breath{transform-origin:50% 50%;transform-box:view-box;animation:breath 11s var(--ease-io) infinite}
+@keyframes breath{0%,100%{transform:scale(.94)}45%,55%{transform:scale(1.04)}}
+.drum .orbit{transform-origin:50% 50%;transform-box:view-box;animation:spin 90s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.drum text{fill:var(--bone-2);font-family:var(--f-body);font-size:10.5px;letter-spacing:.42em;text-transform:uppercase}
+.drum .core{fill:url(#emberCore)}
+.drum .bw{font-family:var(--f-display);font-style:italic;font-size:24px;letter-spacing:0;text-transform:none;fill:var(--bone);transition:opacity .3s}
+.drum .bh{font-size:8.5px;letter-spacing:.32em;fill:var(--bone-3)}
+.ripples{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.ripple{position:absolute;width:40px;height:40px;margin:-20px 0 0 -20px;border-radius:50%;border:1px solid rgba(233,160,106,.7);animation:ripple 2.6s var(--ease) forwards}
+.ripple.b{animation-delay:.18s;border-color:rgba(238,231,219,.35)}
+@keyframes ripple{from{transform:scale(.2);opacity:1}to{transform:scale(22);opacity:0}}
+.hero-in{position:relative;z-index:2;padding-block:140px max(56px,calc(env(safe-area-inset-bottom,0px) + 36px))}
+.hero-in .wrap{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:40px;align-items:end}
+.hero h1{font-size:clamp(3.6rem,8.6vw,8.8rem);line-height:.9;letter-spacing:-.025em}
+.hero h1 em{color:var(--ember-2)}
+.hero-sub{margin-top:30px;max-width:32em;font-size:clamp(1rem,1.25vw,1.1rem);color:var(--bone-2)}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px}
+.hero-next{justify-self:end;display:grid;gap:10px;width:min(100%,360px);padding:22px 24px;border-radius:20px;background:rgba(24,21,18,.55);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:inset 0 0 0 1px var(--line);text-decoration:none;transition:box-shadow .5s,transform .7s var(--ease)}
+.hero-next:hover{box-shadow:inset 0 0 0 1px rgba(210,122,66,.6);transform:translateY(-4px)}
+.hero-next .k{display:flex;align-items:center;gap:10px;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.hero-next .k i{width:7px;height:7px;border-radius:50%;background:var(--ember);animation:pulse 2.4s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(210,122,66,.55)}70%{box-shadow:0 0 0 10px rgba(210,122,66,0)}100%{box-shadow:0 0 0 0 rgba(210,122,66,0)}}
+.hero-next h3{font-size:1.75rem;line-height:1.08}
+.hero-next .m{display:flex;justify-content:space-between;gap:10px;font-size:.84rem;color:var(--bone-2)}
+.hint{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);z-index:2;font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--bone-3);pointer-events:none}
+.js .hero .rise:not(.in){opacity:0;transform:translateY(22px)}
+.js .hero .rise{transition:opacity 1.5s var(--ease) var(--d,0s),transform 1.5s var(--ease) var(--d,0s)}
+.js .drum:not(.in){opacity:0;transform:translateY(-54%) scale(.86)}
+.js .drum{transition:opacity 2.4s var(--ease),transform 2.4s var(--ease)}
+@media (max-width:900px){
+  .hero{align-items:end}
+  .drum{right:50%;top:34%;width:min(118vw,620px);transform:translate(50%,-50%)}
+  .js .drum:not(.in){transform:translate(50%,-50%) scale(.86)}
+  .hero-in .wrap{grid-template-columns:1fr;gap:28px}
+  .hero-next{justify-self:start}
+  .hero-in{padding-top:52vh}
+  .hint{display:none}
+}
+@media (max-width:520px){.hero-next{display:none}}
+
+/* ---------- Manifesto ---------- */
+.manifesto{position:relative;padding-block:170px 150px;text-align:center}
+.manifesto .eyebrow{justify-content:center}
+.manifesto blockquote{margin:34px auto 0;max-width:18em;font-family:var(--f-display);font-weight:300;font-size:clamp(2.1rem,4.6vw,4.4rem);line-height:1.1;letter-spacing:-.01em}
+.manifesto blockquote em{color:var(--ember-2)}
+.manifesto cite{display:block;margin-top:30px;font-style:normal;font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:var(--bone-3)}
+.marks{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:110px;border-top:1px solid var(--line);text-align:left}
+.marks div{padding:28px 24px 0 0}
+.marks div+div{padding-left:24px;border-left:1px solid var(--line)}
+.marks b{display:block;font-family:var(--f-display);font-weight:300;font-size:clamp(2.6rem,4vw,3.8rem);line-height:1;color:var(--bone);font-variant-numeric:tabular-nums}
+.marks span{display:block;margin-top:12px;font-size:.84rem;color:var(--bone-2);line-height:1.5}
+@media (max-width:900px){.manifesto{padding-block:110px 100px}.marks{grid-template-columns:1fr 1fr;margin-top:70px}.marks div:nth-child(3){border-left:0;padding-left:0}.marks div:nth-child(n+3){border-top:1px solid var(--line);margin-top:24px}}
+
+/* ---------- Services index ---------- */
+.services{background:var(--soil)}
+.services .wrap{padding-block:140px}
+.sv-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:end}
+.sv-head h2{font-size:clamp(2.8rem,5.6vw,5.4rem)}
+.sv-head p{color:var(--bone-2);max-width:30em;justify-self:end}
+.intents{display:flex;flex-wrap:wrap;gap:8px;margin-top:56px}
+.intent{border:1px solid var(--line);background:transparent;border-radius:999px;padding:9px 18px;font-size:.82rem;color:var(--bone-2);transition:background .4s,color .4s,border-color .4s}
+.intent:hover{border-color:rgba(238,231,219,.45);color:var(--bone)}
+.intent[aria-pressed="true"]{background:var(--bone);border-color:var(--bone);color:var(--ink)}
+.intent span{margin-left:6px;opacity:.55;font-variant-numeric:tabular-nums}
+.sv-list{list-style:none;margin:34px 0 0;padding:0;border-top:1px solid var(--line)}
+.sv{border-bottom:1px solid var(--line);transition:opacity .5s}
+.sv[hidden]{display:none}
+.sv>button{width:100%;display:grid;grid-template-columns:56px minmax(0,1fr) 140px 180px 44px;gap:20px;align-items:center;padding:28px 0;background:none;border:0;text-align:left}
+.sv .n{font-size:.76rem;color:var(--bone-3);font-variant-numeric:tabular-nums;letter-spacing:.06em}
+.sv .t{font-family:var(--f-display);font-weight:300;font-size:clamp(1.7rem,2.9vw,2.6rem);line-height:1.05;transition:transform .8s var(--ease),color .5s}
+.sv .t small{display:block;font-family:var(--f-body);font-size:.78rem;color:var(--bone-3);margin-top:8px;letter-spacing:.02em}
+.sv .d,.sv .p{font-size:.88rem;color:var(--bone-2);font-variant-numeric:tabular-nums}
+.sv .p{text-align:right;color:var(--bone)}
+.sv .pm{justify-self:end;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);position:relative;transition:transform .7s var(--ease),background .4s,border-color .4s}
+.sv .pm::before,.sv .pm::after{content:"";position:absolute;left:50%;top:50%;width:12px;height:1px;background:var(--bone);transform:translate(-50%,-50%)}
+.sv .pm::after{transform:translate(-50%,-50%) rotate(90deg);transition:transform .7s var(--ease)}
+.sv>button:hover .t{color:var(--ember-2);transform:translateX(8px)}
+.sv>button:hover .pm{border-color:var(--ember)}
+.sv.open .pm{transform:rotate(180deg);background:var(--ember);border-color:var(--ember)}
+.sv.open .pm::after{transform:translate(-50%,-50%) rotate(0)}
+.sv.open .pm::before,.sv.open .pm::after{background:#1A0F08}
+.sv-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .8s var(--ease)}
+.sv-body>div{overflow:hidden}
+.sv.open .sv-body{grid-template-rows:1fr}
+.sv-in{display:grid;grid-template-columns:56px minmax(0,1.3fr) minmax(0,1fr);gap:20px 20px;padding:0 0 36px}
+.sv-in>p{grid-column:2;color:var(--bone-2);max-width:40em}
+.sv-side{grid-column:3;display:grid;gap:16px;align-content:start}
+.sv-side .note{font-size:.8rem;color:var(--bone-3);line-height:1.55;padding:14px 16px;border-radius:12px;background:rgba(238,231,219,.04);box-shadow:inset 0 0 0 1px var(--line)}
+.sv-side .note b{color:var(--bone-2);font-weight:500}
+.sv-side .btn{justify-self:start}
+.sv-foot{display:flex;flex-wrap:wrap;gap:8px 32px;margin-top:28px;font-size:.8rem;color:var(--bone-3)}
+@media (max-width:900px){
+  .services .wrap{padding-block:100px}
+  .sv-head{grid-template-columns:1fr;gap:18px}.sv-head p{justify-self:start}
+  .sv>button{grid-template-columns:34px minmax(0,1fr) 40px;gap:12px;padding:22px 0}
+  .sv .d,.sv .p{display:none}
+  .sv-in{grid-template-columns:1fr;padding-bottom:28px}
+  .sv-in>p,.sv-side{grid-column:1}
+}
+
+/* ---------- Journeys: ten steps in a circle, twenty-five themes ---------- */
+.journeys{position:relative;overflow:hidden}
+.journeys .wrap{padding-block:150px}
+.jr-head{text-align:center;max-width:820px;margin:0 auto}
+.jr-head .eyebrow{justify-content:center}
+.jr-head h2{margin-top:22px;font-size:clamp(2.8rem,5.6vw,5.4rem)}
+.jr-head p{margin-top:22px;color:var(--bone-2)}
+.tabs{display:inline-flex;gap:4px;margin-top:40px;padding:4px;border-radius:999px;box-shadow:inset 0 0 0 1px var(--line)}
+.tab{border:0;background:transparent;border-radius:999px;padding:11px 22px;font-size:.82rem;color:var(--bone-2);transition:background .5s,color .5s}
+.tab[aria-selected="true"]{background:var(--bone);color:var(--ink)}
+.panel[hidden]{display:none}
+.ten{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px;align-items:center;margin-top:80px}
+.wheel{position:relative;width:min(100%,560px);aspect-ratio:1;justify-self:center}
+.wheel svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.wheel .track{fill:none;stroke:var(--line);stroke-width:1}
+.wheel .prog{fill:none;stroke:var(--ember);stroke-width:1.5;stroke-linecap:round;transform:rotate(-90deg);transform-origin:50% 50%;transition:stroke-dashoffset 1.1s var(--ease)}
+.wheel .inner{fill:none;stroke:rgba(238,231,219,.07);stroke-width:1}
+.node{position:absolute;width:52px;height:52px;margin:-26px 0 0 -26px;border-radius:50%;border:1px solid var(--line);background:var(--night);display:grid;place-items:center;font-size:.8rem;font-variant-numeric:tabular-nums;color:var(--bone-2);transition:background .5s,color .5s,border-color .5s,transform .7s var(--ease)}
+.node:hover{border-color:var(--ember);color:var(--bone)}
+.node.done{border-color:rgba(210,122,66,.55);color:var(--bone)}
+.node[aria-current="true"]{background:var(--ember);border-color:var(--ember);color:#1A0F08;transform:scale(1.18)}
+.wheel-c{position:absolute;inset:22%;display:grid;place-items:center;text-align:center}
+.wheel-c small{display:block;font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+.wheel-c b{display:block;font-family:var(--f-display);font-weight:300;font-size:clamp(4rem,9vw,6.6rem);line-height:1;margin-top:4px}
+.step-copy{max-width:30em}
+.step-copy .k{font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+.step-copy h3{margin-top:14px;font-size:clamp(2.2rem,3.8vw,3.4rem)}
+.step-copy p{margin-top:18px;color:var(--bone-2);min-height:5.2em}
+.step-ctl{display:flex;align-items:center;gap:10px;margin-top:30px}
+.circ{width:48px;height:48px;border-radius:50%;border:1px solid var(--line);background:transparent;display:grid;place-items:center;transition:border-color .4s,background .4s}
+.circ:hover{border-color:var(--bone)}
+.step-ctl .sp{flex:1}
+.ten-foot{margin-top:40px;padding-top:24px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:12px 40px;align-items:center}
+.ten-foot .price{font-family:var(--f-display);font-size:2rem;line-height:1}
+.ten-foot .price small{display:block;font-family:var(--f-body);font-size:.78rem;color:var(--bone-3);margin-top:6px}
+.js .swap{transition:opacity .45s,transform .7s var(--ease)}
+.swap.out{opacity:0;transform:translateY(10px)}
+.tf{margin-top:80px}
+.tf-intro{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:end;margin-bottom:44px}
+.tf-intro p{color:var(--bone-2)}
+.tf-intro .btn{justify-self:end}
+.themes{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.themes li{position:relative;border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:22px 20px 26px;min-height:132px;display:grid;align-content:space-between;gap:16px;overflow:hidden;transition:background .6s}
+.themes li::before{content:"";position:absolute;inset:0;background:radial-gradient(120% 90% at var(--mx,50%) var(--my,50%),rgba(210,122,66,.22),transparent 60%);opacity:0;transition:opacity .6s}
+.themes li:hover::before{opacity:1}
+.themes li span{position:relative;font-size:.72rem;color:var(--bone-3);font-variant-numeric:tabular-nums;letter-spacing:.08em}
+.themes li b{position:relative;font-family:var(--f-display);font-weight:400;font-size:1.32rem;line-height:1.15}
+@media (max-width:1000px){.themes{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:900px){
+  .journeys .wrap{padding-block:100px}
+  .ten{grid-template-columns:1fr;gap:36px;margin-top:56px}
+  .node{width:42px;height:42px;margin:-21px 0 0 -21px;font-size:.74rem}
+  .tf-intro{grid-template-columns:1fr;gap:20px}.tf-intro .btn{justify-self:start}
+}
+@media (max-width:560px){.themes{grid-template-columns:repeat(2,minmax(0,1fr))}.themes li{min-height:112px;padding:16px 14px 20px}.themes li b{font-size:1.15rem}}
+
+/* ---------- Events ---------- */
+.events{background:var(--soil)}
+.events .wrap{padding-block:140px}
+.ev-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:24px}
+.ev-head h2{font-size:clamp(2.8rem,5.6vw,5.4rem)}
+.ev-list{list-style:none;margin:40px 0 0;padding:0;border-top:1px solid var(--line)}
+.ev{border-bottom:1px solid var(--line)}
+.ev[hidden]{display:none}
+.ev>button{width:100%;display:grid;grid-template-columns:120px minmax(0,1fr) 220px 150px 44px;gap:24px;align-items:center;padding:28px 0;background:none;border:0;text-align:left}
+.date{display:flex;align-items:baseline;gap:10px}
+.date b{font-family:var(--f-display);font-weight:300;font-size:3.2rem;line-height:.9;font-variant-numeric:lining-nums tabular-nums}
+.date span{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--bone-2);line-height:1.35}
+.ev .t{font-family:var(--f-display);font-weight:400;font-size:clamp(1.45rem,2.3vw,2rem);line-height:1.12;transition:color .5s}
+.ev .t small{display:block;margin-top:8px;font-family:var(--f-body);font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.ev .w{font-size:.86rem;color:var(--bone-2);line-height:1.5}
+.ev .pr{text-align:right;font-size:.92rem;font-variant-numeric:tabular-nums}
+.ev .pr small{display:block;font-size:.74rem;color:var(--bone-3)}
+.ev>button:hover .t{color:var(--ember-2)}
+.ev.open .pm{transform:rotate(180deg);background:var(--ember);border-color:var(--ember)}
+.ev.open .pm::after{transform:translate(-50%,-50%) rotate(0)}
+.ev.open .pm::before,.ev.open .pm::after{background:#1A0F08}
+.ev .pm{justify-self:end;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);position:relative;transition:transform .7s var(--ease),background .4s,border-color .4s}
+.ev .pm::before,.ev .pm::after{content:"";position:absolute;left:50%;top:50%;width:12px;height:1px;background:var(--bone);transform:translate(-50%,-50%)}
+.ev .pm::after{transform:translate(-50%,-50%) rotate(90deg);transition:transform .7s var(--ease)}
+.ev-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .8s var(--ease)}
+.ev-body>div{overflow:hidden}
+.ev.open .ev-body{grid-template-rows:1fr}
+.ev-in{display:grid;grid-template-columns:120px minmax(0,1.3fr) minmax(0,1fr);gap:20px 24px;padding:0 0 36px}
+.ev-in>p{grid-column:2;color:var(--bone-2)}
+.ev-in .agenda{grid-column:2;list-style:none;margin:0;padding:0;display:grid;gap:6px;font-size:.88rem;color:var(--bone-2)}
+.ev-in .agenda li{display:grid;grid-template-columns:62px 1fr;gap:12px}
+.ev-in .agenda b{color:var(--bone);font-weight:500;font-variant-numeric:tabular-nums}
+.ev-side{grid-column:3;grid-row:1 / span 2;display:grid;gap:12px;align-content:start;font-size:.86rem;color:var(--bone-2)}
+.ev-side dl{display:grid;grid-template-columns:auto 1fr;gap:8px 18px;margin:0}
+.ev-side dt{color:var(--bone-3)}
+.ev-side dd{margin:0;color:var(--bone)}
+.ev-side .btn{justify-self:start;margin-top:8px}
+.seats{display:inline-flex;align-items:center;gap:8px}
+.seats i{width:6px;height:6px;border-radius:50%;background:var(--ember)}
+.seats.low i{animation:pulse 2s infinite}
+@media (max-width:1000px){.ev>button{grid-template-columns:96px minmax(0,1fr) 120px 44px}.ev .w{display:none}}
+@media (max-width:900px){
+  .events .wrap{padding-block:100px}
+  .ev>button{grid-template-columns:76px minmax(0,1fr) 40px;gap:14px;padding:22px 0}
+  .ev .pr{display:none}
+  .date{flex-direction:column;gap:4px}
+  .date b{font-size:2.6rem}
+  .ev-in{grid-template-columns:1fr;padding-bottom:28px}
+  .ev-in>p,.ev-in .agenda,.ev-side{grid-column:1;grid-row:auto}
+}
+
+/* ---------- Voices ---------- */
+.voices .wrap{padding-block:150px}
+.vo-top{display:flex;justify-content:space-between;align-items:center;gap:20px}
+.vo-ctl{display:flex;align-items:center;gap:10px}
+.vo-count{font-size:.8rem;color:var(--bone-3);font-variant-numeric:tabular-nums;min-width:56px;text-align:center}
+.vo-stage{position:relative;margin-top:60px;min-height:clamp(300px,34vw,420px)}
+.quote{position:absolute;inset:0;display:grid;align-content:start;gap:34px;transition:opacity .8s var(--ease),transform 1s var(--ease)}
+.quote[aria-hidden="true"]{opacity:0;transform:translateY(20px);pointer-events:none}
+.quote blockquote{margin:0;font-family:var(--f-display);font-weight:300;font-size:clamp(2rem,4.2vw,4rem);line-height:1.1;max-width:19em}
+.quote blockquote::before{content:"„";color:var(--ember);margin-right:.04em}
+.quote blockquote::after{content:"”";color:var(--ember)}
+.quote footer{display:flex;align-items:center;gap:14px;font-size:.84rem;color:var(--bone-2)}
+.quote footer b{font-family:var(--f-display);font-weight:400;font-size:1.5rem;color:var(--bone)}
+.vo-bar{display:flex;gap:6px;margin-top:20px}
+.vo-bar button{flex:1;height:22px;border:0;background:transparent;padding:10px 0;position:relative}
+.vo-bar button::before{content:"";position:absolute;left:0;right:0;top:10px;height:1px;background:var(--line)}
+.vo-bar button i{position:absolute;left:0;top:10px;height:1px;width:100%;background:var(--bone);transform:scaleX(0);transform-origin:left}
+.vo-bar button.on i{transform:scaleX(var(--k,0))}
+.vo-bar button.past i{transform:scaleX(1)}
+@media (max-width:900px){.voices .wrap{padding-block:100px}.vo-stage{min-height:360px}}
+
+/* ---------- Teacher (the one daylight band) ---------- */
+.light{background:var(--bone);color:var(--ink)}
+.teacher .wrap{padding-block:150px;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px}
+.tc-mark{grid-column:1 / 6;position:sticky;top:110px;align-self:start}
+.monogram{position:relative;width:min(100%,460px);aspect-ratio:1}
+.monogram svg{width:100%;height:100%;overflow:visible}
+.monogram .r{fill:none;stroke:var(--line-ink);stroke-width:1}
+.monogram .r.e{stroke:var(--ember)}
+.monogram .spin{transform-origin:50% 50%;transform-box:view-box;animation:spin 120s linear infinite}
+.monogram text{fill:var(--ink-2);font-family:var(--f-body);font-size:9.5px;letter-spacing:.38em;text-transform:uppercase}
+.monogram .g{fill:var(--ink);font-family:var(--f-display);font-style:italic;font-size:150px;font-weight:300;letter-spacing:0;text-transform:none}
+.tc-copy{grid-column:7 / 13}
+.tc-copy h2{margin-top:22px;font-size:clamp(2.8rem,5.4vw,5.2rem)}
+.tc-copy h2 em{color:#9C4E1F}
+.tc-copy .lead{margin-top:30px;font-family:var(--f-display);font-size:clamp(1.4rem,1.9vw,1.75rem);line-height:1.35;color:var(--ink)}
+.tc-copy>p{margin-top:20px;color:var(--ink-2)}
+.timeline{list-style:none;margin:48px 0 0;padding:0;border-top:1px solid var(--line-ink)}
+.timeline li{display:grid;grid-template-columns:112px minmax(0,1fr);gap:18px;padding:16px 0;border-bottom:1px solid var(--line-ink);transition:padding .6s var(--ease),background .5s}
+.timeline li:hover{padding-left:10px;background:rgba(27,23,19,.03)}
+.timeline b{font-family:var(--f-display);font-weight:400;font-size:1.3rem;font-variant-numeric:tabular-nums;color:#9C4E1F}
+.timeline span{color:var(--ink);font-size:.94rem}
+.timeline span small{display:block;color:var(--ink-2);font-size:.82rem}
+.more-tl{margin-top:20px}
+.timeline li.x{display:none}
+.timeline.all li.x{display:grid}
+@media (max-width:900px){.teacher .wrap{padding-block:100px;grid-template-columns:1fr}.tc-mark{grid-column:1;position:static}.monogram{width:min(80%,340px);margin:0 auto}.tc-copy{grid-column:1}.timeline li{grid-template-columns:86px minmax(0,1fr)}}
+
+/* ---------- Courses ---------- */
+.courses .wrap{padding-block:140px}
+.co-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:24px}
+.co-head h2{font-size:clamp(2.8rem,5.6vw,5.4rem)}
+.co-head p{color:var(--bone-2);max-width:28em}
+.co-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:56px}
+.co{position:relative;display:grid;align-content:space-between;gap:28px;min-height:330px;padding:28px;border-radius:20px;background:var(--soil);box-shadow:inset 0 0 0 1px var(--line);overflow:hidden;transition:transform .8s var(--ease),box-shadow .6s}
+.co::before{content:"";position:absolute;inset:0;background:radial-gradient(80% 70% at var(--mx,80%) var(--my,0%),rgba(210,122,66,.18),transparent 65%);opacity:0;transition:opacity .6s}
+.co:hover{transform:translateY(-6px);box-shadow:inset 0 0 0 1px rgba(210,122,66,.45)}
+.co:hover::before{opacity:1}
+.co>*{position:relative}
+.co .tag{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.co h3{margin-top:16px;font-size:1.9rem;line-height:1.08}
+.co p{margin-top:14px;font-size:.88rem;color:var(--bone-2);line-height:1.6}
+.co .bt{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:18px;border-top:1px solid var(--line)}
+.co .bt b{font-family:var(--f-display);font-weight:400;font-size:1.7rem;line-height:1;font-variant-numeric:tabular-nums}
+.co .bt button{border:0;background:transparent;font-size:.82rem;color:var(--bone);display:inline-flex;align-items:center;gap:10px;padding:8px 0}
+.co .bt button:hover{color:var(--ember-2)}
+.co.feat{grid-column:span 2;background:linear-gradient(140deg,#2A1E15,#1B1612 60%)}
+.co.feat h3{font-size:clamp(2.2rem,3.4vw,3rem)}
+@media (max-width:1000px){.co-grid{grid-template-columns:1fr 1fr}.co.feat{grid-column:span 2}}
+@media (max-width:640px){.courses .wrap{padding-block:100px}.co-grid{grid-template-columns:1fr}.co.feat{grid-column:auto}.co{min-height:0}}
+
+/* ---------- Practical ---------- */
+.practical{background:var(--soil)}
+.practical .wrap{padding-block:140px;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px}
+.pr-head{grid-column:1 / 5}
+.pr-head h2{margin-top:22px;font-size:clamp(2.6rem,4.8vw,4.6rem)}
+.pr-head p{margin-top:20px;color:var(--bone-2)}
+.qa{grid-column:6 / 13;border-top:1px solid var(--line)}
+.qa details{border-bottom:1px solid var(--line)}
+.qa summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:26px 0;cursor:pointer;font-family:var(--f-display);font-size:clamp(1.45rem,2.1vw,1.85rem);line-height:1.2}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary i{flex:none;width:38px;height:38px;border-radius:50%;border:1px solid var(--line);position:relative;transition:transform .7s var(--ease),border-color .4s}
+.qa summary i::before,.qa summary i::after{content:"";position:absolute;left:50%;top:50%;width:12px;height:1px;background:var(--bone);transform:translate(-50%,-50%)}
+.qa summary i::after{transform:translate(-50%,-50%) rotate(90deg);transition:transform .7s var(--ease)}
+.qa details[open] summary i{transform:rotate(180deg);border-color:var(--ember)}
+.qa details[open] summary i::after{transform:translate(-50%,-50%) rotate(0)}
+.qa .a{padding:0 60px 28px 0;color:var(--bone-2);display:grid;gap:12px}
+.qa .a ul{margin:0;padding-left:18px;display:grid;gap:4px;columns:2;column-gap:28px;display:block}
+.qa .a li{break-inside:avoid;margin-bottom:4px;font-size:.88rem}
+@media (max-width:900px){.practical .wrap{padding-block:100px;grid-template-columns:1fr}.pr-head,.qa{grid-column:1}.qa{margin-top:18px}.qa .a{padding-right:0}.qa .a ul{columns:1}}
+
+/* ---------- Footer ---------- */
+.foot{position:relative;overflow:hidden}
+.foot .wrap{padding-top:150px}
+.foot-cta{text-align:center}
+.foot-cta h2{font-size:clamp(3rem,7vw,7rem);line-height:.98}
+.foot-cta h2 em{color:var(--ember-2)}
+.foot-cta p{margin:26px auto 0;max-width:30em;color:var(--bone-2)}
+.foot-cta .row{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:36px}
+.foot-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;margin-top:120px;padding-block:44px;border-top:1px solid var(--line)}
+.foot h3{font-family:var(--f-body);font-weight:500;font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.foot address,.foot-grid p{font-style:normal;font-size:.94rem;line-height:1.7;color:var(--bone)}
+.foot ul{list-style:none;margin:0;padding:0;display:grid;gap:4px}
+.foot ul a{text-decoration:none;color:var(--bone-2);transition:color .4s}
+.foot ul a:hover{color:var(--bone)}
+.copy{display:inline-flex;margin-top:6px;border:1px solid var(--line);background:transparent;border-radius:999px;padding:4px 12px;font-size:.72rem;color:var(--bone-2);transition:border-color .3s,color .3s}
+.copy:hover{border-color:var(--bone);color:var(--bone)}
+.word{display:block;font-family:var(--f-display);font-weight:300;font-size:clamp(4.6rem,19vw,20rem);line-height:.78;letter-spacing:-.04em;text-align:center;white-space:nowrap;color:transparent;-webkit-text-stroke:1px rgba(238,231,219,.22);user-select:none;margin-top:24px}
+.legal{display:flex;flex-wrap:wrap;gap:8px 24px;padding-block:26px calc(26px + env(safe-area-inset-bottom,0px));font-size:.74rem;color:var(--bone-3);border-top:1px solid var(--line)}
+.legal span:first-child{margin-right:auto}
+@media (max-width:900px){.foot .wrap{padding-top:100px}.foot-grid{grid-template-columns:1fr 1fr;margin-top:80px}}
+
+/* ---------- Mobile bar ---------- */
+.mbar{position:fixed;left:0;right:0;bottom:0;z-index:40;padding:12px var(--gr) calc(12px + env(safe-area-inset-bottom,0px)) var(--gl);background:rgba(17,15,13,.9);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 -1px 0 var(--line);display:none;transform:translateY(110%);transition:transform .7s var(--ease);gap:10px}
+.mbar.show{transform:none}
+.mbar .btn{flex:1}
+.mbar .call{flex:none;width:54px;height:54px;border-radius:50%;display:grid;place-items:center;box-shadow:inset 0 0 0 1px var(--line);text-decoration:none}
+@media (max-width:820px){.mbar{display:flex}}
+
+/* ---------- Booking drawer ---------- */
+.scrim{position:fixed;inset:0;z-index:80;background:rgba(8,7,6,.62);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);opacity:0;transition:opacity .6s}
+.scrim.open{opacity:1}
+.drawer{position:fixed;top:0;right:0;bottom:0;z-index:90;width:min(560px,100%);background:var(--soil);box-shadow:-1px 0 0 var(--line);display:flex;flex-direction:column;transform:translateX(102%);transition:transform 1s var(--ease);padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);padding-right:env(safe-area-inset-right,0px)}
+.drawer.open{transform:none}
+.dr-head{display:flex;align-items:center;gap:16px;padding:22px 30px;border-bottom:1px solid var(--line)}
+.dr-steps{display:flex;gap:6px;list-style:none;margin:0;padding:0;flex:1;max-width:260px}
+.dr-steps li{flex:1;height:2px;border-radius:2px;background:var(--line);position:relative;overflow:hidden}
+.dr-steps li::after{content:"";position:absolute;inset:0;background:var(--ember);transform:scaleX(0);transform-origin:left;transition:transform .8s var(--ease)}
+.dr-steps li.on::after{transform:none}
+.dr-kicker{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--bone-3);white-space:nowrap}
+.x{margin-left:auto;width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:transparent;display:grid;place-items:center;transition:transform .7s var(--ease),border-color .4s;flex:none}
+.x:hover{border-color:var(--bone);transform:rotate(90deg)}
+.dr-body{flex:1;overflow-y:auto;padding:30px;overscroll-behavior:contain}
+.dr-title{font-size:2.5rem;line-height:1.02}
+.dr-title em{color:var(--ember-2)}
+.dr-sub{margin-top:10px;color:var(--bone-2);font-size:.9rem}
+.dr-body h4{font-family:var(--f-body);font-weight:500;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin:32px 0 14px}
+.opt{display:grid;grid-template-columns:20px minmax(0,1fr) auto;gap:2px 14px;align-items:start;padding:16px 18px;border-radius:14px;box-shadow:inset 0 0 0 1px var(--line);margin-bottom:8px;cursor:pointer;transition:box-shadow .4s,background .4s}
+.opt:hover{box-shadow:inset 0 0 0 1px rgba(238,231,219,.4)}
+.opt input{margin:4px 0 0;width:16px;height:16px;accent-color:var(--ember)}
+.opt b{font-weight:500;font-size:.95rem}
+.opt span{grid-column:2 / 4;color:var(--bone-3);font-size:.82rem}
+.opt em{font-style:normal;font-family:var(--f-display);font-size:1.35rem;line-height:1.1;white-space:nowrap}
+.opt:has(input:checked){box-shadow:inset 0 0 0 1px var(--ember);background:rgba(210,122,66,.07)}
+.cal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.cal-head b{font-family:var(--f-display);font-weight:400;font-size:1.5rem}
+.cal-head .nav2{display:flex;gap:6px}
+.cal-head .nav2 button{width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:transparent;display:grid;place-items:center}
+.cal-head .nav2 button:disabled{opacity:.3}
+.cal{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px;text-align:center}
+.cal .dw{font-size:.68rem;letter-spacing:.1em;color:var(--bone-3);padding:4px 0}
+.cal button{aspect-ratio:1;border:0;border-radius:50%;background:transparent;font-size:.88rem;font-variant-numeric:tabular-nums;position:relative;transition:background .3s,color .3s}
+.cal button:disabled{color:var(--bone-3);opacity:.35;cursor:default}
+.cal button.av::after{content:"";position:absolute;left:50%;bottom:14%;width:4px;height:4px;margin-left:-2px;border-radius:50%;background:var(--ember)}
+.cal button.av:hover{background:rgba(238,231,219,.08)}
+.cal button[aria-pressed="true"]{background:var(--bone);color:var(--ink)}
+.cal button[aria-pressed="true"]::after{background:var(--ink)}
+.times{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
+.times button{border:0;border-radius:10px;padding:12px 0;font-size:.88rem;font-variant-numeric:tabular-nums;box-shadow:inset 0 0 0 1px var(--line);background:transparent;transition:box-shadow .3s,background .3s,color .3s}
+.times button:hover{box-shadow:inset 0 0 0 1px rgba(238,231,219,.4)}
+.times button:disabled{opacity:.3;text-decoration:line-through;cursor:default}
+.times button[aria-pressed="true"]{background:var(--ember);color:#1A0F08;box-shadow:none}
+.times-empty{font-size:.86rem;color:var(--bone-3)}
+.field{display:grid;gap:7px;margin-bottom:14px}
+.field label{font-size:.8rem;color:var(--bone-2)}
+.field input,.field select,.field textarea{font:inherit;font-weight:400;color:var(--bone);background:rgba(238,231,219,.04);border:0;box-shadow:inset 0 0 0 1px var(--line);border-radius:12px;padding:14px;width:100%;transition:box-shadow .3s}
+.field textarea{min-height:96px;resize:vertical}
+.field input:focus,.field select:focus,.field textarea:focus{outline:0;box-shadow:inset 0 0 0 1px var(--ember)}
+.field select option{background:var(--soil)}
+.err{font-size:.78rem;color:#F0A27A}
+.check{display:grid;grid-template-columns:20px 1fr;gap:12px;font-size:.84rem;color:var(--bone-2);margin-top:8px;cursor:pointer;line-height:1.55}
+.check input{width:16px;height:16px;margin:3px 0 0;accent-color:var(--ember)}
+.health{padding:18px;border-radius:14px;background:rgba(210,122,66,.06);box-shadow:inset 0 0 0 1px rgba(210,122,66,.28);display:grid;gap:10px}
+.health p{font-size:.84rem;color:var(--bone-2)}
+.health ul{margin:0;padding-left:18px;font-size:.8rem;color:var(--bone-3);columns:2;column-gap:20px}
+.health .alt{font-size:.84rem;color:var(--ember-2)}
+.dr-foot{display:flex;align-items:center;gap:16px;padding:18px 30px;border-top:1px solid var(--line)}
+.dr-foot .sum{font-size:.76rem;color:var(--bone-3);line-height:1.35}
+.dr-foot .sum b{display:block;font-family:var(--f-display);font-weight:400;font-size:1.7rem;color:var(--bone)}
+.dr-foot .btn{margin-left:auto}
+.back{background:none;border:0;padding:8px 0;font-size:.86rem;color:var(--bone-2);text-decoration:underline;text-underline-offset:4px}
+.ticket{border-radius:20px;overflow:hidden;box-shadow:inset 0 0 0 1px var(--line);background:var(--night)}
+.ticket .top{position:relative;padding:30px 28px;background:radial-gradient(120% 140% at 100% 0%,#3B2516,#1E1712 60%);overflow:hidden}
+.ticket .top svg{position:absolute;right:-60px;top:-60px;width:220px;height:220px;opacity:.5}
+.ticket .top small{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.ticket .top h3{margin-top:10px;font-size:2.4rem;line-height:1.02;position:relative}
+.ticket dl{display:grid;grid-template-columns:auto 1fr;gap:10px 18px;margin:0;padding:24px 28px;font-size:.88rem}
+.ticket dt{color:var(--bone-3)}
+.ticket dd{margin:0}
+.perf{border-top:1px dashed var(--line);margin:0 18px}
+.next-steps{margin-top:22px;display:grid;gap:12px;padding:22px;border-radius:16px;box-shadow:inset 0 0 0 1px var(--line);font-size:.88rem;color:var(--bone-2)}
+.next-steps b{color:var(--bone)}
+.next-steps code{font-family:inherit;color:var(--bone);background:rgba(238,231,219,.06);padding:2px 8px;border-radius:6px}
+.demo{margin-top:18px;font-size:.74rem;color:var(--bone-3)}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);z-index:100;background:var(--bone);color:var(--ink);padding:12px 20px;border-radius:999px;font-size:.84rem;opacity:0;pointer-events:none;transition:opacity .35s,transform .5s var(--ease)}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media (max-width:520px){.dr-body{padding:24px 20px}.dr-head,.dr-foot{padding-left:20px;padding-right:20px}.times{grid-template-columns:repeat(3,minmax(0,1fr))}.health ul{columns:1}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition-duration:.01ms!important;animation:none!important}}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="mark" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18.5" fill="none" stroke="currentColor" stroke-width="1"/><circle cx="20" cy="20" r="12.5" fill="none" stroke="currentColor" stroke-width="1" opacity=".55"/><circle cx="20" cy="20" r="5" fill="#D27A42"/><path d="M20 1.5v6M20 32.5v6M1.5 20h6M32.5 20h6" stroke="currentColor" stroke-width="1"/></symbol>
+    <symbol id="arr" viewBox="0 0 18 10"><path d="M0 5h16M12 1l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.2"/></symbol>
+  </defs>
+</svg>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Jógasámán, főoldal"><svg aria-hidden="true"><use href="#mark"/></svg><span><b>Jógasámán</b><small>Gauranga Das</small></span></a>
+    <ul>
+      <li><a href="#kezelesek">Kezelések</a></li>
+      <li><a href="#utak">Folyamatok</a></li>
+      <li><a href="#esemenyek">Események</a></li>
+      <li><a href="#gauranga">Gauranga</a></li>
+      <li><a href="#kepzesek">Képzések</a></li>
+      <li><a href="#tudnivalok">Tudnivalók</a></li>
+    </ul>
+    <button class="btn btn-ember" type="button" data-book="">Időpontfoglalás</button>
+    <button class="burger" id="burger" type="button" aria-label="Menü" aria-expanded="false" aria-controls="menu"><i></i><i></i></button>
+  </div>
+</header>
+<nav class="menu" id="menu" aria-label="Fő menü">
+  <ul>
+    <li><a href="#kezelesek"><i>01</i>Kezelések</a></li>
+    <li><a href="#utak"><i>02</i>Folyamatok</a></li>
+    <li><a href="#esemenyek"><i>03</i>Események</a></li>
+    <li><a href="#gauranga"><i>04</i>Gauranga</a></li>
+    <li><a href="#kepzesek"><i>05</i>Képzések</a></li>
+    <li><a href="#tudnivalok"><i>06</i>Tudnivalók</a></li>
+  </ul>
+  <p>Nomád Jóga · 1033 Budapest, Szérűskert u. 33.<br>06 30 914 0839 · jogasaman@gmail.com</p>
+</nav>
+
+<main id="top">
+  <!-- Opening: the drum breathes; a tap is a beat -->
+  <section class="hero" id="hero" aria-label="Jógasámán">
+    <div class="glow" id="glow" aria-hidden="true"></div>
+    <div class="drum" id="drum" aria-hidden="true">
+      <svg viewBox="0 0 800 800">
+        <defs>
+          <radialGradient id="emberCore" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#F0B07A"/><stop offset=".55" stop-color="#D27A42"/><stop offset="1" stop-color="#8E3E17"/></radialGradient>
+          <path id="orbitPath" d="M400,400 m-338,0 a338,338 0 1,1 676,0 a338,338 0 1,1 -676,0"/>
+        </defs>
+        <g class="orbit"><text><textPath href="#orbitPath">Sámáni gyógyítás · Szertartások · Hang · Légzés · Jóga · Lélekutazás · Sámáni gyógyítás · Szertartások · Hang · Légzés · Jóga ·</textPath></text></g>
+        <g class="breath">
+          <circle class="r" cx="400" cy="400" r="380"/>
+          <circle class="r" cx="400" cy="400" r="300"/>
+          <circle class="r e" cx="400" cy="400" r="232"/>
+          <circle class="r" cx="400" cy="400" r="172"/>
+          <circle class="r" cx="400" cy="400" r="118"/>
+          <circle class="r" cx="400" cy="400" r="72"/>
+          <circle class="core" cx="400" cy="400" r="18"/>
+        </g>
+        <text class="bw" id="breathWord" x="400" y="462" text-anchor="middle">belégzés</text>
+        <text class="bh" id="breathHint" x="400" y="488" text-anchor="middle">kattints, és dobban</text>
+      </svg>
+    </div>
+    <div class="ripples" id="ripples" aria-hidden="true"></div>
+    <div class="hero-in">
+      <div class="wrap">
+        <div>
+          <span class="eyebrow rise" style="--d:.2s">Gauranga Das · Budapest</span>
+          <h1 class="split" id="heroTitle" style="margin-top:26px">Utazás <em>befelé</em></h1>
+          <p class="hero-sub rise" style="--d:.8s">Sámáni gyógyítás, medicina-szertartások, hangterápia, transzlégzés és jóga. Egyéni kezelések és csoportos szertartások a budai Nomád Jógában.</p>
+          <div class="hero-ctas rise" style="--d:.95s">
+            <button class="btn btn-ember" type="button" data-book="">Egyéni időpontot foglalok <svg class="arrow" aria-hidden="true"><use href="#arr"/></svg></button>
+            <a class="btn btn-ring" href="#esemenyek">Közelgő szertartások</a>
+          </div>
+        </div>
+        <a class="hero-next rise" style="--d:1.15s" href="#esemenyek" id="heroNext">
+          <span class="k"><i></i><span id="hnWhen">Következő szertartás</span></span>
+          <h3 id="hnTitle">Teliholdas Rapé Medicina Szertartás</h3>
+          <span class="m"><span id="hnWhere">Nomád Jóga, 18:00</span><span id="hnPrice">8 000 Ft</span></span>
+        </a>
+      </div>
+    </div>
+    <div class="hint" aria-hidden="true">Görgess</div>
+  </section>
+
+  <!-- Manifesto -->
+  <section class="manifesto" aria-labelledby="mf-h">
+    <div class="wrap">
+      <span class="eyebrow fade">Miért csinálom</span>
+      <h2 id="mf-h" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Gauranga Das hitvallása</h2>
+      <blockquote class="split">Mindig is érdekelt, hogyan lehetne <em>enyhíteni</em> az emberek szenvedését, és megtanítani őket a boldog, <em>teljes</em> életre.</blockquote>
+      <cite class="fade" style="--d:.3s">Gauranga Das</cite>
+      <div class="marks fade" style="--d:.2s">
+        <div><b data-count="2007">2007</b><span>óta tanítja, amit indiai mestereitől kapott</span></div>
+        <div><b data-count="20" data-suffix="+">20+</b><span>út Indiába és Thaiföldre</span></div>
+        <div><b data-count="2017">2017</b><span>óta dolgozik hanggal és sámáni módszerekkel</span></div>
+        <div><b>Cusco</b><span>Inka sámán-beavatás és képzés, 2022–23</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="services" id="kezelesek" aria-labelledby="sv-h">
+    <div class="wrap">
+      <div class="sv-head">
+        <div><span class="eyebrow fade">Egyéni kezelések</span><h2 id="sv-h" class="split" style="margin-top:22px">Mivel érkezel?</h2></div>
+        <p class="fade">Válaszd ki, mivel szeretnél dolgozni, és megmutatjuk az ehhez illő utakat. Minden kezelés személyre szabott, és előtte átbeszéljük, mi foglalkoztat.</p>
+      </div>
+      <div class="intents fade" id="intents" role="group" aria-label="Szűrés szándék szerint"></div>
+      <ul class="sv-list" id="svList"></ul>
+      <div class="sv-foot"><span>90 perces kezelés 25 000 Ft · Nagy Kambo-szertartás 50 000 Ft · Magán jógaóra 15 000 Ft</span><span>Fizetés a helyszínen, készpénzben</span></div>
+    </div>
+  </section>
+
+  <!-- Journeys -->
+  <section class="journeys" id="utak" aria-labelledby="jr-h">
+    <div class="wrap">
+      <div class="jr-head">
+        <span class="eyebrow fade">Folyamatok</span>
+        <h2 id="jr-h" class="split">Két út a mélybe</h2>
+        <p class="fade">Sokan nem tudják, melyik módszer lenne nekik a legjobb. Ezért állt össze két teljes folyamat: egy tízlépéses traumaoldás, és egy huszonöt alkalmas árnyékmunka.</p>
+        <div class="tabs fade" role="tablist" aria-label="Folyamatok">
+          <button class="tab" role="tab" id="tab10" aria-selected="true" aria-controls="p10">10 alkalmas traumaoldás</button>
+          <button class="tab" role="tab" id="tab25" aria-selected="false" aria-controls="p25">25 alkalmas árnyékmunka</button>
+        </div>
+      </div>
+
+      <div class="panel" id="p10" role="tabpanel" aria-labelledby="tab10">
+        <div class="ten">
+          <div class="wheel fade" id="wheel">
+            <svg viewBox="0 0 560 560" aria-hidden="true">
+              <circle class="inner" cx="280" cy="280" r="190"/>
+              <circle class="inner" cx="280" cy="280" r="140"/>
+              <circle class="track" cx="280" cy="280" r="250"/>
+              <circle class="prog" id="prog" cx="280" cy="280" r="250"/>
+            </svg>
+            <div class="wheel-c"><div><small>Alkalom</small><b id="wcNum">01</b></div></div>
+          </div>
+          <div class="step-copy fade" style="--d:.15s">
+            <div class="swap" id="stepSwap">
+              <span class="k" id="stepK">1. alkalom · 90 perc</span>
+              <h3 id="stepT">Erő visszahívása</h3>
+              <p id="stepP"></p>
+            </div>
+            <div class="step-ctl">
+              <button class="circ" type="button" id="stPrev" aria-label="Előző alkalom"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M10 3L5 8l5 5"/></svg></button>
+              <button class="circ" type="button" id="stNext" aria-label="Következő alkalom"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M6 3l5 5-5 5"/></svg></button>
+              <span class="sp"></span>
+            </div>
+            <div class="ten-foot">
+              <div class="price">10 × 25 000 Ft<small>10 × 90 perc, alkalmanként fizetve</small></div>
+              <button class="btn btn-ember" type="button" data-book="trauma10">Elindulok az úton</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel tf" id="p25" role="tabpanel" aria-labelledby="tab25" hidden>
+        <div class="tf-intro">
+          <p>Az árnyékmunka nem csak gondolati szinten, hanem a tudatalatti, energetikai és testi szinten is segít az elhanyagolt személyiségrészek gyógyulásában. Vezetett, imaginatív meditációval dolgozunk párbeszédes formában, mély relaxációban, időnként légző- és szomatikus gyakorlatokkal. A sorrend variálható, egy-egy témával külön is dolgozhatunk.</p>
+          <button class="btn btn-ember" type="button" data-book="shadow25">Árnyékmunka időpontot kérek</button>
+        </div>
+        <ol class="themes" id="themes"></ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- Events -->
+  <section class="events" id="esemenyek" aria-labelledby="ev-h">
+    <div class="wrap">
+      <div class="ev-head">
+        <div><span class="eyebrow fade">Csoportos alkalmak</span><h2 id="ev-h" class="split" style="margin-top:22px">Szertartások és elvonulások</h2></div>
+        <div class="intents fade" id="evFilters" role="group" aria-label="Szűrés esemény típusa szerint" style="margin-top:0"></div>
+      </div>
+      <ul class="ev-list" id="evList"></ul>
+    </div>
+  </section>
+
+  <!-- Voices -->
+  <section class="voices" aria-labelledby="vo-h">
+    <div class="wrap">
+      <div class="vo-top">
+        <span class="eyebrow fade">A 10 alkalom után</span>
+        <div class="vo-ctl fade">
+          <button class="circ" type="button" id="voPrev" aria-label="Előző vélemény"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M10 3L5 8l5 5"/></svg></button>
+          <span class="vo-count" id="voCount">1 / 6</span>
+          <button class="circ" type="button" id="voNext" aria-label="Következő vélemény"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M6 3l5 5-5 5"/></svg></button>
+        </div>
+      </div>
+      <h2 id="vo-h" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Vendégek véleményei</h2>
+      <div class="vo-stage" id="voStage" aria-live="polite"></div>
+      <div class="vo-bar" id="voBar"></div>
+    </div>
+  </section>
+
+  <!-- Teacher -->
+  <section class="teacher light" id="gauranga" aria-labelledby="tc-h">
+    <div class="wrap">
+      <div class="tc-mark fade">
+        <div class="monogram" aria-hidden="true">
+          <svg viewBox="0 0 460 460">
+            <defs><path id="mono" d="M230,230 m-196,0 a196,196 0 1,1 392,0 a196,196 0 1,1 -392,0"/></defs>
+            <circle class="r" cx="230" cy="230" r="222"/>
+            <circle class="r e" cx="230" cy="230" r="170"/>
+            <circle class="r" cx="230" cy="230" r="128"/>
+            <g class="spin"><text><textPath href="#mono">Gauranga Das · Szücs Gábor · Jógaoktató · Sámáni gyógyító · Hangterapeuta ·</textPath></text></g>
+            <text class="g" x="230" y="282" text-anchor="middle">G</text>
+          </svg>
+        </div>
+      </div>
+      <div class="tc-copy">
+        <span class="eyebrow fade">Gauranga Das</span>
+        <h2 id="tc-h" class="split">Tizenhét évesen egy <em>jógakönyv</em> fordította fel az életét</h2>
+        <p class="lead fade">Programozó matematikusnak készült Moszkvában, aztán a jóga az Istenkeresés útjára vitte. Ma a Nomád Jóga stúdiót vezeti, és sámáni módszerekkel, hanggal és légzéssel kísér másokat befelé.</p>
+        <p class="fade">Húsz évig élt a Krisna-tudatban szerzetesként, majd lelkészként. Évekig tanult és alkalmazott természetgyógyászatot, ájurvédát és védikus asztrológiát. 2003 óta gyakorol naponta, indiai mesterek vezetésével, 2007 óta tanít, 2017 óta dolgozik hangtálakkal, gongokkal és sámándobbal. A sámánizmust Majercsik János Oguz vezetésével tanulja, 2022–23-ban pedig a perui Cuscóban kapott inka sámán-beavatást. Három gyermek büszke apukája.</p>
+        <ol class="timeline fade" id="timeline" style="--d:.1s"></ol>
+        <button class="btn btn-ink-ring more-tl" type="button" id="tlMore">Összes képzés</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Courses -->
+  <section class="courses" id="kepzesek" aria-labelledby="co-h">
+    <div class="wrap">
+      <div class="co-head">
+        <div><span class="eyebrow fade">Letölthető képzések</span><h2 id="co-h" class="split" style="margin-top:22px">Tanulj otthon</h2></div>
+        <p class="fade">Workshopok és tanfolyamok rögzített anyagai video- és hangfelvételként. Az átutalás beérkezése után e-mailben kapod meg a letöltési linkeket.</p>
+      </div>
+      <div class="co-grid" id="coGrid"></div>
+    </div>
+  </section>
+
+  <!-- Practical -->
+  <section class="practical" id="tudnivalok" aria-labelledby="pr-h">
+    <div class="wrap">
+      <div class="pr-head">
+        <span class="eyebrow fade">Tudnivalók</span>
+        <h2 id="pr-h" class="split">Mielőtt érkezel</h2>
+        <p class="fade">A kezelések és szertartások nem helyettesítik az orvosi ellátást. Ha bizonytalan vagy, foglalás előtt hívj, és átbeszéljük.</p>
+      </div>
+      <div class="qa fade" id="qa"></div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot" id="kapcsolat">
+  <div class="wrap">
+    <div class="foot-cta">
+      <span class="eyebrow fade" style="justify-content:center">Kapcsolat</span>
+      <h2 class="split" style="margin-top:24px">Kezdjük <em>egy beszélgetéssel</em></h2>
+      <p class="fade">Ha nem tudod, melyik út a tiéd, hívj vagy írj WhatsAppon. Közösen megtaláljuk.</p>
+      <div class="row fade">
+        <button class="btn btn-ember" type="button" data-book="">Időpontot foglalok</button>
+        <a class="btn btn-ring" href="https://wa.me/36309140839" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </div>
+    <div class="foot-grid">
+      <div><h3>Helyszín</h3><address>Nomád Jóga<br>1033 Budapest<br>Szérűskert u. 33.</address><p style="margin-top:8px"><a class="u" href="https://www.google.com/maps/search/?api=1&query=Sz%C3%A9r%C5%B1skert+u.+33+Budapest+1033" target="_blank" rel="noopener">Útvonal</a></p></div>
+      <div><h3>Telefon és WhatsApp</h3><p>06 30 914 0839</p><button class="copy" type="button" data-copy="+36309140839">Másolás</button></div>
+      <div><h3>E-mail</h3><p>jogasaman@gmail.com</p><button class="copy" type="button" data-copy="jogasaman@gmail.com">Másolás</button></div>
+      <div><h3>Kövesd</h3><ul><li><a href="https://fb.com/jogasaman" target="_blank" rel="noopener">Facebook</a></li><li><a href="https://fb.com/gaurangad" target="_blank" rel="noopener">Messenger</a></li><li><a href="https://www.jogasaman.com/" target="_blank" rel="noopener">Blog</a></li></ul></div>
+    </div>
+    <span class="word" aria-hidden="true">Jógasámán</span>
+    <div class="legal"><span>© 2026 Gauranga Das (Szücs Gábor EV)</span><a href="https://www.jogasaman.com/" target="_blank" rel="noopener" style="text-decoration:none">Adatkezelési szabályzat</a><span>A kezelések nem helyettesítik az orvosi ellátást.</span></div>
+  </div>
+</footer>
+
+<div class="mbar" id="mbar"><button class="btn btn-ember" type="button" data-book="">Időpontfoglalás</button><a class="call" href="tel:+36309140839" aria-label="Telefonhívás"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 005 5L15 12l5 2v4a2 2 0 01-2 2A16 16 0 013 5a2 2 0 012-2"/></svg></a></div>
+<div class="scrim" id="scrim" hidden></div>
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="drTitle" hidden>
+  <div class="dr-head"><span class="dr-kicker" id="drKicker">Foglalás</span><ol class="dr-steps" id="drSteps"></ol><button class="x" id="drClose" type="button" aria-label="Bezárás"><svg width="14" height="14" viewBox="0 0 14 14" stroke="currentColor" stroke-width="1.2"><path d="M1 1l12 12M13 1L1 13"/></svg></button></div>
+  <div class="dr-body" id="drBody"></div>
+  <div class="dr-foot" id="drFoot"></div>
+</aside>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+(() => {
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const hover=matchMedia('(hover:hover)').matches;
+const $=(s,r=document)=>r.querySelector(s);
+const $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const clamp=(v,a=0,b=1)=>Math.min(b,Math.max(a,v));
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fmt=n=>n.toLocaleString('hu-HU').replace(/\s/g,' ')+' Ft';
+const ARR='<svg class="arrow" aria-hidden="true"><use href="#arr"/></svg>';
+document.documentElement.classList.add('js');
+
+/* ================= Content ================= */
+const HEALTH={
+  kambo:['Súlyos szívbetegség, szívműtét, pacemaker','Stroke, agyi érrög, aneurizma, vérhígító szedése','Nagyobb műtét utáni lábadozás, szervátültetés, implantátum','Aktív gyomor- vagy bélfekély, Crohn-betegség','Pszichózis, bipoláris zavar, súlyos szorongás az elmúlt 5 évben','Onkológiai kezelés 6 héten belül','Aktív, súlyos epilepszia, Addison-kór','Terhesség, 6 hónaposnál fiatalabb gyermek szoptatása','18 év alatti életkor','Drog- vagy alkoholfüggőség'],
+  breath:['Szív- és keringési problémák','Terhesség','Tüdőpanaszok','Idegrendszeri vagy pszichiátriai panasz','Epilepszia'],
+  sound:['Pacemaker','Terhesség első 12 hete','Heveny gyulladás, láz','Műtét utáni 6 hét','Kemoterápia','Epe- vagy vesekő'],
+  rape:['Terhesség, szoptatás','Szív- és keringési problémák','Pszichiátriai panasz']
+};
+const SERVICES=[
+  {id:'trauma10',intent:['trauma'],t:'10 alkalmas komplex traumaoldás',sub:'Teljes folyamat sámáni módszerekkel',dur:'10 × 90 perc',price:25000,priceNote:'alkalmanként',
+   text:'Tíz személyre szabott alkalom, amely elegendő ahhoz, hogy sok mélyebben fekvő blokkot, traumát kimozdítson a tudatalattiból. Az erő visszahívásától a traumaoldó transzlégzésig, útmutatással az önmunka folytatásához.',health:'breath'},
+  {id:'shadow25',intent:['trauma'],t:'25 alkalmas egyéni árnyékmunka',sub:'Vezetett, imaginatív lélekutazások',dur:'25 × 90 perc',price:25000,priceNote:'alkalmanként',
+   text:'Mélyrelaxált, a hipnózishoz hasonló állapotban belső lélekutazásra indulunk, ahol közvetlenül találkozhatsz az árnyékrészeiddel. A belső utazásokat szomatikus és légzőgyakorlatok egészítik ki. Egy-egy témával külön is dolgozhatunk.',health:null},
+  {id:'kambo',intent:['medicine'],t:'Kambo Medicina szertartás',sub:'Egyéni szertartás, 90 vagy 180 perc',dur:'90 / 180 perc',price:25000,price2:50000,priceNote:'',
+   text:'Az óriás majombéka (Phyllomedusa bicolor) mirigyváladéka az Amazonas-medence törzseinek hagyományos tisztító medicinája. A 180 perces nagy szertartáson Rapé és Sananga is része az élménynek. Böjtölve, koffein- és alkoholmentesen érkezz.',health:'kambo'},
+  {id:'rape',intent:['medicine'],t:'Rapé Medicina szertartás',sub:'1–3 fő részére',dur:'90 perc',price:25000,priceNote:'',
+   text:'Az amazonasi medicinák erejével kapcsolódunk: Sananga szemcsepp, Copaiba olaj, majd az orron keresztül befújt Rapé porok. Útmutatást kérünk a dohány szellemétől az életünkhöz. Böjtölve, koffein- és alkoholmentesen érkezz.',health:'rape'},
+  {id:'drum',intent:['sound','trauma'],t:'Sámándobos lélekutazás',sub:'Révülés ősi hangszerekkel',dur:'90 perc',price:25000,priceNote:'',
+   text:'Sámáncsörgő, doromb, didgeridoo, gong és sámándob ritmusa visz tudattágító, tisztító utazásra. Előtte megbeszéljük, mi foglalkoztat, hogy kijelöljük az utazás irányát, utána pedig közösen feldolgozzuk az élményeket. Útkereséshez, blokkoldáshoz.',health:null},
+  {id:'soul',intent:['trauma'],t:'Lélekrész-visszahívás',sub:'Előkészítő alkalommal együtt',dur:'2 × 90 perc',price:25000,priceNote:'alkalmanként',
+   text:'Ősi sámáni technika, amellyel visszahívhatjuk a múltban átélt fájdalmak során elvesztett lélekrészeinket és a hozzájuk tartozó erőt. Ha még nem jártál nálam, az első alkalom az Erő visszahívása. Mindig józanul érkezz.',health:null},
+  {id:'transgen',intent:['trauma'],t:'Transzgenerációs oldás',sub:'Munka az ősökkel',dur:'90 perc',price:25000,priceNote:'',
+   text:'Olyan elakadásokkal dolgozunk, amelyek a szüleid, nagyszüleid életében is jelen voltak. Visszamegyünk addig a generációig, ahol még megfelelően áramlott az erő, és az ősöktől kérünk erőt és áldást.',health:null},
+  {id:'bowls',intent:['sound'],t:'Tibeti hangtálas kezelés',sub:'Hangtálak a testen és körülötte',dur:'90 perc',price:25000,priceNote:'',
+   text:'Hanyatt fekszel, a tested köré és a csakráidra hangtálakat helyezünk. A hang és a rezgés átjárja a testet, oldja a stresszt és ellazítja az elmét.',health:'sound'},
+  {id:'breath',intent:['sound','trauma'],t:'Egyéni transzlégzés',sub:'Sámánlégzés, holotróp légzés',dur:'90 perc',price:25000,priceNote:'',
+   text:'Erőteljes, aktív légzéstechnika, amely megnyitja a tudat határait, felszínre hozza a negatív programokat, és segít feldolgozni a traumákat. A dobos utaztatásnál intenzívebb, a te aktív részvételeddel.',health:'breath'},
+  {id:'yoga',intent:['yoga'],t:'Magán jógaóra',sub:'Egy vagy két fő részére',dur:'90 perc',price:15000,priceNote:'',
+   text:'Személyre szabott óra jógapózokból, légzőgyakorlatokból és levezető relaxációból. Kezdőknek, egyéni igényekkel érkezőknek, haladó gyakorlatokhoz, vagy ha a csoportos órák nem illenek az állapotodhoz. Hétköznap napközben.',health:null}
+];
+const INTENTS=[['all','Minden'],['trauma','Traumaoldás és önismeret'],['medicine','Medicina-szertartás'],['sound','Hang és légzés'],['yoga','Jóga']];
+const TEN=[
+  ['Erő visszahívása','Az út első lépése: megerősít, és előkészíti a terepet a mélyebb munkához.'],
+  ['Lélekvisszahívás','A traumák során elveszett lélekrészeid és a hozzájuk tartozó erő visszahívása.'],
+  ['Személyiségrészek integrációja','A lehasadt, elhanyagolt részeid visszatalálnak az egészhez.'],
+  ['Hucsa tisztítása hangtálakkal','A nehéz, beragadt energia tisztítása a hangtálak rezgésével.'],
+  ['Transzgenerációs oldás','Azok a minták, amelyek nem a te életedben, hanem a felmenőidében születtek.'],
+  ['Belső gyermek gyógyítása','Találkozás a gyermeki énnel, aki még most is hordozza a régi sebeket.'],
+  ['Anyaseb és anyai ősök gyógyítása','Az anyai ág sebei és erőforrásai.'],
+  ['Apaseb és apai ősök gyógyítása','Az apai ág sebei és erőforrásai.'],
+  ['A tudatalatti barlangok tisztítása','Utazás a tudatalatti mélyére, ahol a régi terhek rejtőznek.'],
+  ['Traumaoldó transzlégzés','A záró alkalom: erőteljes légzés, amely mindazt felszínre hozza és elengedi, amire készen állsz.']
+];
+const THEMES=['Alap-érzelmek, mögöttes traumák','Találkozás az Árnyékkal','Szégyenseb','Bizalmi seb','Haragseb','Elkerülési seb','Apaseb / Anyaseb','Érzelmi triggerek','Beszélgetés az Árnyékkal','A 3-2-1 módszer','Tükör-integrálás','Érzelmek és kapcsolatok','A félelmek labirintusa','A Harag megszelídítése','A magány és a gyász','A bűntudat és a szégyen','A lélek kertje','Romboló és tápláló érzelmek','Narcisztikus sebek','A trauma 3 szobája','A Belső Gyermek','Transzgenerációs traumák','Vészhelyzeti és nyugalmi állapot','A bolygóideg és a légzés','Önkorlátozó hiedelmek'];
+const NOMAD='Nomád Jóga, 1033 Budapest, Szérűskert u. 33.';
+const EVENTS=[
+  {id:'cacao',type:'ceremony',d:'2026-10-25',t:'Psychedelic Cacao Dance + Transzlégzés',ed:'Samhain Edition',time:'17:00–21:30',where:'Studio 46, 1117 Budapest, Hunyadi János út 3., D épület',lead:'Gauranga Das, Brigi és Duboduh',price:12000,cap:30,taken:24,dl:'2026-10-20',
+   text:'A közelgő Samhain, az ősök ünnepe alkalmából ünnepeljük az Életet a kakaó szellemével, a lélegzet és a tánc erejével. Hozd magaddal, amit el szeretnél engedni vagy be szeretnél vonzani.',agenda:[['17:00','Érkezés, víz-oltár építése'],['17:30','Kakaó-szertartás'],['18:00','Transzlégzés'],['19:30','Pszichedelikus szabadtánc']]},
+  {id:'rape1026',type:'ceremony',d:'2026-10-26',t:'Teliholdas Rapé Medicina Szertartás',ed:'Vishuddhi Edition',time:'18:00–21:00',where:NOMAD,lead:'Gauranga Das',price:8000,cap:15,taken:13,dl:'2026-10-20',
+   text:'Amazonasi gyógynövényekhez kapcsolódunk: Ambil, Sananga szemcsepp, Copaiba olaj és Rapé, majd icarók, sámánhangszerek és a légzés szakrális terében utazunk. Aznap csak reggel egyél szilárd ételt, és kerüld a koffeint, az alkoholt.',health:'rape'},
+  {id:'whole',type:'workshop',d:'2026-10-31',t:'Egészen Önmagad',ed:'Lélekvisszahívás és transzgenerációs gyógyítás',time:'9:00–12:00',where:NOMAD,lead:'Gauranga Das',price:10000,cap:16,taken:9,dl:'2026-10-25',
+   text:'Csoportos szertartás a transzgenerációs sérülések gyógyítására apai és anyai ágon, és a lehasadt lélekrészek visszahívására.',agenda:[['9:00','Érkezés, kezdő kör'],['9:30','Transzgenerációs traumaoldó szertartás'],['10:00','Naplóírás a gyermekkori sérülésekről'],['10:30','Lélekvisszahívás-szertartás'],['11:30','Záró kör, útravaló']]},
+  {id:'sauna',type:'ceremony',d:'2026-10-31',t:'Fény és Lélek',ed:'Spirituális szauna- és önismereti utazás Mindenszentek előestéjén',time:'Este, több órán át',where:'Oázis Wellness Park, Szigetszentmiklós',lead:'Gauranga Das',price:null,cap:null,taken:null,dl:null,
+   text:'Egy gondosan felépített este, amelyben a ceremoniális perui Criollo kakaó, a hangtálak, a jóga, a légzés, a szauna, a kék lótusz és a záró hangutazás épül egymásra.'},
+  {id:'bath',type:'ceremony',d:'2026-11-02',t:'Hangtálas hangfürdő',ed:'Kapcsolódás az Ősökkel',time:'18:00–20:00',where:NOMAD,lead:'Gauranga Das',price:7000,cap:20,taken:8,dl:'2026-10-27',
+   text:'60–70 perc, amikor semmi dolgod, csak lefeküdni, ellazulni és lélegezni. Gongok, tibeti és kristály hangtálak, harangok, doromb, esőbot, óceándob, didgeridoo és sámándob hangjai simulnak egymáshoz.',health:'sound'},
+  {id:'rape1109',type:'ceremony',d:'2026-11-09',t:'Újholdas Rapé Medicina Szertartás',ed:'Ajna Edition',time:'18:00–21:00',where:NOMAD,lead:'Gauranga Das',price:8000,cap:15,taken:6,dl:'2026-11-03',
+   text:'Az újhold szertartása a harmadik szem, az Ajna csakra analógiáival. Amazonasi medicinák, icarók és sámándobos hangutazás.',health:'rape'},
+  {id:'retreat',type:'retreat',d:'2026-11-20',d2:'2026-11-22',t:'Kambo és Transzlégzés Elvonulás',ed:'Háromnapos belső tisztulás',time:'Péntek 10:00 – vasárnap 17:00',where:'Tündértanya Szellemi Központ',lead:'Gauranga Das és Duboduh',price:115000,deposit:35000,priceNote:'35 000 Ft előleg + 80 000 Ft a helyszínen',cap:16,taken:12,dl:null,
+   text:'Transzlégzés, Rapé, Kambo, Sananga, kakaó, izzasztókunyhó, hideg vizes merülés és páros légzésgyakorlatok. Batyus, lehetőleg húsmentes étkezés.',agenda:[['Péntek','„Belső hő” légzés, szomatikus transzlégzés, Kambo-szertartás, páros csakralégzés'],['Szombat','Reggeli jóga, kakaó-ceremónia, Erdei Diád, esti sámánszertartás'],['Vasárnap','Tűzszertartás, izzasztókunyhó, születés-gyakorlat, záró kör']],health:'kambo'},
+  {id:'rape1124',type:'ceremony',d:'2026-11-24',t:'Teliholdas Rapé Medicina Szertartás',ed:'Sahasrara Edition',time:'18:00–21:00',where:NOMAD,lead:'Gauranga Das',price:8000,cap:15,taken:3,dl:'2026-11-19',
+   text:'A telihold szertartása a koronacsakra, a Sahasrara analógiáival. Amazonasi medicinák, icarók és sámándobos hangutazás.',health:'rape'},
+  {id:'somatic',type:'workshop',d:'2026-11-29',t:'Szomatikus transzlégzés workshop',ed:'Gauranga Das vezetésével',time:'14:00–18:30',where:'Yoga Park Jógastúdió, 1031 Budapest, Záhony u. 7.',lead:'Gauranga Das',price:12000,cap:15,taken:5,dl:'2026-11-20',
+   text:'Gyakorlatorientált délután a test és a légzés kapcsolatáról, csoportos transzlégzéssel.',health:'breath'},
+  {id:'kambo1130',type:'ceremony',d:'2026-11-30',t:'Kambo Medicina Szertartás',ed:'Rapé, Kambo és Sananga',time:'17:00–21:00',where:NOMAD,lead:'Gauranga Das',price:40000,deposit:20000,priceNote:'ebből 20 000 Ft előleg',cap:12,taken:7,dl:'2026-11-25',
+   text:'Négyórás, mélyreható test-lelki megtisztulás. Hozz 6 liter szénsavmentes ásványvizet, érkezz böjtölve, kényelmes, lehetőleg ujjatlan felsőben.',agenda:[['17:00','Érkezés, nyitó kör'],['17:30','A Kambo-terápia ismertetése'],['18:00','Rapé-ceremónia'],['18:30','Kambo-ceremónia'],['20:00','Sananga, relaxáció'],['20:30','Záró kör, kérdések']],health:'kambo'},
+  {id:'india',type:'travel',d:'2027-02-08',d2:'2027-02-24',t:'Mesés India',ed:'Goa és Dél-India körutazás',time:'15 nap',where:'Chennai, Thiruvannamalai, Dél-India, Goa',lead:'Gauranga Das és Duboduh, a Pandya Kingdom szervezésében',price:null,cap:15,taken:9,dl:'2027-02-28',
+   text:'Turisztikai programok közös jógagyakorlással, transzlégzéssel, transztánccal és sámánszertartásokkal. Fakultatív látogatás a Bhrigu-pálmalevél könyvtárba.'},
+  {id:'munay',type:'retreat',d:'2027-03-12',d2:'2027-03-15',t:'Munay Ki elvonulás és átadói képzés',ed:'A 9+1 inka rítus',time:'4 nap',where:'Egyeztetés szerint',lead:'Gauranga Das',price:null,cap:null,taken:null,dl:null,
+   text:'Minden résztvevő megkapja a Munay Ki 9+1 rítusát, és maga is továbbadhatja őket. Lélekutazások, tűzceremónia, izzasztókunyhó, víz-szertartás, transzlégzés és Rapé-szertartás.'}
+];
+const EVTYPES=[['all','Minden'],['ceremony','Szertartás'],['workshop','Workshop'],['retreat','Elvonulás'],['travel','Utazás']];
+const VOICES=[
+  ['Szerintem a kezelés-sorozat nagyon jól lett összeállítva, és receptre kéne felírni mindenkinek, 1-től 10-ig.','Ági'],
+  ['A legmerészebb álmaimban sem gondoltam, hogy ennek a vége egy ilyen szintű megkönnyebbülés lesz.','Laura'],
+  ['Minden alkalommal könnyebb lett valami: vagy az életem, vagy a lelkem, vagy a fájdalmam, vagy a tudatom.','Adrienn'],
+  ['Szó szerint el tudom mondani, hogy a tíz alkalom után évek terheit tudtam letenni.','Zoli'],
+  ['A tizedik alkalom végén úgy megyek ki ezen az ajtón, mint aki repülni kész.','Edit'],
+  ['Mintha megszűnt volna ez a nyomás, a szorongó állapot, és a könnyed békességbe érkeztem meg.','Zoé']
+];
+const TIMELINE=[
+  ['2022–23','Inca Medicine School, Paqo path sámán-beavatás és képzés','Az Apaza család tanítóival, Cusco, Peru'],
+  ['2022','Kambo-képzés','Mészáros Dániellel'],
+  ['2021','Nusta Karpay inka beavatás és oktatóképzés','Sharon Ramel'],
+  ['2020–21','Inka sámán-szertartások','Puma Fredy Quispe Singona'],
+  ['2020','Munay Ki beavatás és oktatóképzés','Juhász Anna'],
+  ['2018–21','Ősök Útja Szellemi Iskola','Majercsik János Oguz'],
+  ['2017','Balla Hangterápia 1–2. szint','Balla Tibor'],
+  ['2014','OKJ sportoktató képzés','Oktáv-Mandala'],
+  ['2013','Ashtanga Yoga Teacher Training','Manju Jois'],
+  ['2008–12','Vaisnava jógamester','Bhaktivedanta Hittudományi Főiskola'],
+  ['2011','Ashtanga Yoga Teacher Training','Manju Jois'],
+  ['2011','Aura Yoga Vinyasa Teacher Training',''],
+  ['2010','Yoga Teacher Training Seminar','Dev Kapil'],
+  ['2003','SJC Vedic Astrology Seminar','Sanjay Rath, Delhi'],
+  ['2001–05','Teológia szak','Bhaktivedanta Hittudományi Főiskola'],
+  ['2000','Bioenergetika szakvizsga','Egészségügyi Szakképző és Továbbképző Intézet'],
+  ['1999','Természetgyógyászat alapvizsga','Egészségügyi Szakképző és Továbbképző Intézet']
+];
+const COURSES=[
+  {id:'astro',tag:'E-learning csomag',t:'Védikus Asztrológia',text:'A négyéves Védikus Asztrológia Iskola teljes jegyzetanyaga (1350 oldal), szoftverek, 20 ezer születési adat, 66 angol e-könyv, Gauranga könyve pdf-ben, és egy ezüst Navaratna-medál postán.',price:80000,feat:true},
+  {id:'death',tag:'23 óra · video és hang',t:'Halál és Köztes Lét',text:'Az egyiptomi, a hindu és a tibeti halottaskönyv teljes felolvasása magyarázatokkal és meditációkkal.',price:20000},
+  {id:'holo',tag:'7 × 2 óra · jegyzetekkel',t:'Holografikus Meditáció',text:'Körülbelül húsz meditációs technika a multidimenzionális érzékelés kibontakoztatására, 60 oldalas jegyzetanyaggal.',price:20000},
+  {id:'power',tag:'5 óra · workshop',t:'Erőtárgyak és házi oltár',text:'Erőtárgyak készítése és használata, szakrális tárgyak, füstölés, a sámán hangszerei és a házi oltár összeállítása.',price:10000},
+  {id:'mary',tag:'7 óra · két pdf könyvvel',t:'Mária Magdolna Misztériuma',text:'Tom Kenyon könyvének felolvasása magyarázatokkal, és az egyiptomi Hórusz-meditációk minden szintje.',price:10000},
+  {id:'hathor',tag:'7 óra · két pdf könyvvel',t:'Hathor-meditációk és tanítások',text:'Meditációk és önfejlesztő technikák Tom Kenyon „A Hathorok üzenetei” című könyve alapján.',price:10000},
+  {id:'breathc',tag:'2 × 4 óra · workshop',t:'A Légzés Csodája',text:'A légzéstechnika alapjaitól a tudatállapotot befolyásoló gyakorlatokig.',price:null}
+];
+
+/* ================= Reveals ================= */
+$$('.split').forEach(el=>{
+  const parts=[];el.childNodes.forEach(n=>{if(n.nodeType===3)n.textContent.split(/\s+/).filter(Boolean).forEach(w=>parts.push([w,false]));else if(n.nodeName==='EM')n.textContent.split(/\s+/).filter(Boolean).forEach(w=>parts.push([w,true]))});
+  el.setAttribute('aria-label',el.textContent.replace(/\s+/g,' ').trim());
+  el.innerHTML=parts.map(([w,e],i)=>`<span class="ln" aria-hidden="true"><span class="wi" style="--i:${i}">${e?`<em>${w}</em>`:w}</span></span>`).join(' ');
+});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{rootMargin:'0px 0px -8% 0px'});
+const watch=()=>$$('.split:not(.in),.fade:not(.in)').forEach(el=>{if(!el.closest('.hero'))io.observe(el)});
+watch();
+const cio=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;cio.unobserve(e.target);const el=e.target,to=+el.dataset.count,suf=el.dataset.suffix||'';if(reduce)return;const from=to>1000?to-40:0,t0=performance.now();
+  const tick=n=>{const k=clamp((n-t0)/1600);el.textContent=Math.round(from+(to-from)*(1-Math.pow(1-k,3)))+suf;if(k<1)requestAnimationFrame(tick)};requestAnimationFrame(tick)}),{threshold:.6});
+$$('[data-count]').forEach(el=>cio.observe(el));
+
+/* ================= Hero: breathing drum, ember light, a tap is a beat ================= */
+const hero=$('#hero'),drum=$('#drum'),glow=$('#glow'),rip=$('#ripples');
+requestAnimationFrame(()=>setTimeout(()=>{drum.classList.add('in');$('#heroTitle').classList.add('in');$$('.hero .rise').forEach(e=>e.classList.add('in'))},reduce?0:150));
+if(!reduce){
+  const words=['belégzés','bent tartás','kilégzés','szünet'];const dur=[4950,1100,4950,0];let wi=0;
+  const bw=$('#breathWord');(function cycle(){bw.style.opacity=0;setTimeout(()=>{bw.textContent=words[wi];bw.style.opacity=1;const d=dur[wi]||1;wi=(wi+1)%3;setTimeout(cycle,d)},300)})();
+  if(!hover)$('#breathHint').textContent='érintsd meg, és dobban';
+}
+if(hover&&!reduce){
+  let tx=innerWidth*.7,ty=innerHeight*.4,cx=tx,cy=ty,run=false;
+  hero.addEventListener('pointermove',e=>{const r=hero.getBoundingClientRect();tx=e.clientX-r.left;ty=e.clientY-r.top;if(!run){run=true;loop()}});
+  function loop(){cx+=(tx-cx)*.08;cy+=(ty-cy)*.08;glow.style.setProperty('--gx',cx+'px');glow.style.setProperty('--gy',cy+'px');if(Math.abs(tx-cx)+Math.abs(ty-cy)>.5)requestAnimationFrame(loop);else run=false}
+} else glow.style.display='none';
+hero.addEventListener('click',e=>{
+  if(e.target.closest('a,button')||reduce)return;
+  const r=hero.getBoundingClientRect();
+  ['','b'].forEach(c=>{const d=document.createElement('span');d.className='ripple '+c;d.style.left=(e.clientX-r.left)+'px';d.style.top=(e.clientY-r.top)+'px';rip.appendChild(d);setTimeout(()=>d.remove(),3000)});
+  drum.animate([{transform:getComputedStyle(drum).transform},{transform:getComputedStyle(drum).transform+' scale(1.025)'},{transform:getComputedStyle(drum).transform}],{duration:600,easing:'cubic-bezier(.16,1,.3,1)'});
+});
+
+/* ================= Nav ================= */
+const nav=$('#nav'),menu=$('#menu'),burger=$('#burger');let lastY=scrollY,ticking=false;
+function onScroll(){
+  ticking=false;const y=scrollY,H=innerHeight;
+  nav.classList.toggle('solid',y>40);
+  if(!menu.classList.contains('open')){if(y>H&&y>lastY+4)nav.classList.add('hide');else if(y<lastY-4)nav.classList.remove('hide')}
+  lastY=y;
+  $('#mbar').classList.toggle('show',y>H*.7&&drawer.hidden);
+}
+addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(onScroll)}},{passive:true});
+burger.onclick=()=>{const o=!menu.classList.contains('open');menu.classList.toggle('open',o);burger.setAttribute('aria-expanded',o);document.body.style.overflow=o?'hidden':'';nav.classList.remove('hide')};
+$$('#menu a').forEach(a=>a.addEventListener('click',()=>{menu.classList.remove('open');burger.setAttribute('aria-expanded',false);document.body.style.overflow=''}));
+
+/* pointer-follow light on cards and tiles */
+if(hover)document.addEventListener('pointermove',e=>{const el=e.target.closest('.co,.themes li');if(!el)return;const r=el.getBoundingClientRect();el.style.setProperty('--mx',((e.clientX-r.left)/r.width*100)+'%');el.style.setProperty('--my',((e.clientY-r.top)/r.height*100)+'%')},{passive:true});
+
+/* ================= Services ================= */
+const svList=$('#svList'),intents=$('#intents');let svIntent='all';
+INTENTS.forEach(([k,l])=>{const n=k==='all'?SERVICES.length:SERVICES.filter(s=>s.intent.includes(k)).length;const b=document.createElement('button');b.type='button';b.className='intent';b.dataset.k=k;b.innerHTML=`${l}<span>${n}</span>`;b.onclick=()=>{svIntent=k;paintSv()};intents.appendChild(b)});
+SERVICES.forEach((s,i)=>{
+  const li=document.createElement('li');li.className='sv';li.dataset.id=s.id;
+  const pr=s.price2?`${s.price.toLocaleString('hu-HU').replace(/\s/g,' ')} / ${fmt(s.price2)}`:fmt(s.price)+(s.priceNote?`<small style="display:block;color:var(--bone-3);font-size:.74rem">${s.priceNote}</small>`:'');
+  li.innerHTML=`<button type="button" aria-expanded="false" aria-controls="svb-${s.id}"><span class="n">${String(i+1).padStart(2,'0')}</span><span class="t">${s.t}<small>${s.sub}</small></span><span class="d">${s.dur}</span><span class="p">${pr}</span><span class="pm" aria-hidden="true"></span></button>
+  <div class="sv-body" id="svb-${s.id}"><div><div class="sv-in"><p>${s.text}</p><div class="sv-side">
+  ${s.health?`<div class="note"><b>Ellenjavallatok vannak.</b> Foglaláskor rákérdezünk, kétség esetén előbb egyeztetünk.</div>`:''}
+  <button class="btn btn-ember" type="button" data-book="${s.id}">Időpontot foglalok ${ARR}</button></div></div></div></div>`;
+  li.querySelector('button').onclick=()=>{const o=!li.classList.contains('open');$$('.sv.open').forEach(x=>{x.classList.remove('open');x.querySelector('button').setAttribute('aria-expanded',false)});if(o){li.classList.add('open');li.querySelector('button').setAttribute('aria-expanded',true)}};
+  svList.appendChild(li);
+});
+function paintSv(){$$('.intent',intents).forEach(b=>b.setAttribute('aria-pressed',b.dataset.k===svIntent));$$('.sv',svList).forEach(li=>{const s=SERVICES.find(x=>x.id===li.dataset.id);li.hidden=!(svIntent==='all'||s.intent.includes(svIntent))})}
+paintSv();
+
+/* ================= Journeys ================= */
+const tabs=[$('#tab10'),$('#tab25')];
+tabs.forEach((t,i)=>{t.onclick=()=>{tabs.forEach((x,j)=>{x.setAttribute('aria-selected',i===j);$('#'+x.getAttribute('aria-controls')).hidden=i!==j});if(i===1)$$('#themes li').forEach((li,k)=>{li.style.transitionDelay=(k*25)+'ms';li.classList.add('in')})}});
+tabs.forEach((t,i)=>t.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowLeft'){const n=tabs[(i+1)%2];n.focus();n.click()}}));
+const wheel=$('#wheel'),prog=$('#prog');const C=2*Math.PI*250;prog.style.strokeDasharray=C;
+let step=0;const nodes=[];
+TEN.forEach((s,i)=>{const a=-Math.PI/2+i/TEN.length*Math.PI*2;const b=document.createElement('button');b.type='button';b.className='node';b.textContent=String(i+1).padStart(2,'0');b.setAttribute('aria-label',`${i+1}. alkalom: ${s[0]}`);b.style.left=(50+Math.cos(a)*250/560*100)+'%';b.style.top=(50+Math.sin(a)*250/560*100)+'%';b.onclick=()=>goStep(i);wheel.appendChild(b);nodes.push(b)});
+function goStep(i,first){
+  step=(i+TEN.length)%TEN.length;
+  nodes.forEach((n,k)=>{n.setAttribute('aria-current',k===step);n.classList.toggle('done',k<step)});
+  prog.style.strokeDashoffset=C*(1-(step+1)/TEN.length);
+  const sw=$('#stepSwap');const apply=()=>{$('#stepK').textContent=`${step+1}. alkalom · 90 perc`;$('#stepT').textContent=TEN[step][0];$('#stepP').textContent=TEN[step][1];$('#wcNum').textContent=String(step+1).padStart(2,'0');sw.classList.remove('out')};
+  if(first||reduce)apply();else{sw.classList.add('out');setTimeout(apply,260)}
+}
+goStep(0,true);
+$('#stPrev').onclick=()=>goStep(step-1);$('#stNext').onclick=()=>goStep(step+1);
+wheel.addEventListener('keydown',e=>{if(e.key==='ArrowRight'){goStep(step+1);nodes[step].focus()}if(e.key==='ArrowLeft'){goStep(step-1);nodes[step].focus()}});
+const themes=$('#themes');THEMES.forEach((t,i)=>{const li=document.createElement('li');li.className='fade';li.innerHTML=`<span>${String(i+1).padStart(2,'0')}</span><b>${t}</b>`;themes.appendChild(li)});
+
+/* ================= Events ================= */
+const MON=['jan.','febr.','márc.','ápr.','máj.','jún.','júl.','aug.','szept.','okt.','nov.','dec.'];
+const DOW=['vasárnap','hétfő','kedd','szerda','csütörtök','péntek','szombat'];
+const today=new Date();today.setHours(0,0,0,0);
+const P=s=>{const[y,m,d]=s.split('-').map(Number);return new Date(y,m-1,d)};
+const evList=$('#evList'),evF=$('#evFilters');let evType='all';
+const upcoming=EVENTS.filter(e=>P(e.d2||e.d)>=today);
+EVTYPES.forEach(([k,l])=>{const n=k==='all'?upcoming.length:upcoming.filter(e=>e.type===k).length;if(!n)return;const b=document.createElement('button');b.type='button';b.className='intent';b.dataset.k=k;b.innerHTML=`${l}<span>${n}</span>`;b.onclick=()=>{evType=k;paintEv()};evF.appendChild(b)});
+function seatInfo(e){if(e.cap==null)return null;const free=Math.max(0,e.cap-e.taken);return{free,low:free<=3}}
+function evStatus(e){const s=seatInfo(e);if(s&&s.free===0)return'Betelt, várólista';if(e.dl&&P(e.dl)<today)return'Határidő lejárt, érdeklődj';if(s)return s.free<=3?`Utolsó ${s.free} hely`:`${s.free} szabad hely`;return'Jelentkezés nyitva'}
+function dateBlock(e){const a=P(e.d);if(e.d2){const b=P(e.d2);return`<b>${a.getDate()}–${b.getDate()}</b><span>${MON[a.getMonth()]}<br>${a.getFullYear()!==today.getFullYear()?a.getFullYear():DOW[a.getDay()].slice(0,3)}</span>`}return`<b>${a.getDate()}</b><span>${MON[a.getMonth()]}<br>${DOW[a.getDay()]}</span>`}
+upcoming.forEach(e=>{
+  const li=document.createElement('li');li.className='ev';li.dataset.type=e.type;
+  const s=seatInfo(e);
+  li.innerHTML=`<button type="button" aria-expanded="false" aria-controls="evb-${e.id}"><span class="date">${dateBlock(e)}</span><span class="t">${e.t}<small>${e.ed}</small></span><span class="w">${e.where.split(',')[0]}<br>${e.time}</span><span class="pr">${e.price?fmt(e.price):'Érdeklődj'}<small>${evStatus(e)}</small></span><span class="pm" aria-hidden="true"></span></button>
+  <div class="ev-body" id="evb-${e.id}"><div><div class="ev-in"><p>${e.text}</p>
+  ${e.agenda?`<ul class="agenda">${e.agenda.map(([a,b])=>`<li><b>${a}</b><span>${b}</span></li>`).join('')}</ul>`:''}
+  <div class="ev-side"><dl><dt>Időpont</dt><dd>${e.time}</dd><dt>Helyszín</dt><dd>${e.where}</dd><dt>Vezeti</dt><dd>${e.lead}</dd><dt>Díj</dt><dd>${e.price?fmt(e.price)+(e.priceNote?`, ${e.priceNote}`:''):'Részletek jelentkezéskor'}</dd>${e.dl?`<dt>Határidő</dt><dd>${MON[P(e.dl).getMonth()]} ${P(e.dl).getDate()}.</dd>`:''}</dl>
+  ${s?`<span class="seats ${s.low?'low':''}"><i></i>${evStatus(e)}</span>`:''}
+  <button class="btn btn-ember" type="button" data-event="${e.id}">${s&&s.free===0?'Várólistára':'Jelentkezem'} ${ARR}</button></div></div></div></div>`;
+  li.querySelector('button').onclick=()=>{const o=!li.classList.contains('open');$$('.ev.open').forEach(x=>{x.classList.remove('open');x.querySelector('button').setAttribute('aria-expanded',false)});if(o){li.classList.add('open');li.querySelector('button').setAttribute('aria-expanded',true)}};
+  evList.appendChild(li);
+});
+function paintEv(){$$('.intent',evF).forEach(b=>b.setAttribute('aria-pressed',b.dataset.k===evType));$$('.ev',evList).forEach(li=>li.hidden=!(evType==='all'||li.dataset.type===evType))}
+paintEv();
+// hero card: the next event
+(()=>{const e=upcoming[0];if(!e){$('#heroNext').style.display='none';return}const a=P(e.d);const diff=Math.round((a-today)/864e5);
+  $('#hnWhen').textContent=diff===0?'Ma este':diff===1?'Holnap':`${MON[a.getMonth()]} ${a.getDate()}., ${DOW[a.getDay()]}`;
+  $('#hnTitle').textContent=e.t;$('#hnWhere').textContent=`${e.where.split(',')[0]}, ${e.time.split('–')[0]}`;$('#hnPrice').textContent=e.price?fmt(e.price):'';
+  $('#heroNext').addEventListener('click',ev=>{ev.preventDefault();const li=$(`[aria-controls="evb-${e.id}"]`);$('#esemenyek').scrollIntoView({behavior:reduce?'auto':'smooth'});setTimeout(()=>{if(li&&!li.parentElement.classList.contains('open'))li.click()},reduce?0:700)});
+})();
+
+/* ================= Voices ================= */
+const voStage=$('#voStage'),voBar=$('#voBar');let vo=0,voT0=0,voPaused=false;const VO_MS=7000;
+VOICES.forEach(([q,n],i)=>{const f=document.createElement('figure');f.className='quote';f.style.margin='0';f.setAttribute('aria-hidden',i!==0);f.innerHTML=`<blockquote>${q}</blockquote><footer><b>${n}</b><span>a 10 alkalmas traumaoldás után</span></footer>`;voStage.appendChild(f);
+  const b=document.createElement('button');b.type='button';b.setAttribute('aria-label',`${i+1}. vélemény`);b.innerHTML='<i></i>';b.onclick=()=>goVo(i);voBar.appendChild(b)});
+function goVo(i){vo=(i+VOICES.length)%VOICES.length;$$('.quote',voStage).forEach((q,k)=>q.setAttribute('aria-hidden',k!==vo));$$('button',voBar).forEach((b,k)=>{b.classList.toggle('on',k===vo);b.classList.toggle('past',k<vo);b.style.setProperty('--k',0)});$('#voCount').textContent=`${vo+1} / ${VOICES.length}`;voT0=performance.now()}
+$('#voPrev').onclick=()=>goVo(vo-1);$('#voNext').onclick=()=>goVo(vo+1);
+voStage.addEventListener('pointerenter',()=>voPaused=true);voStage.addEventListener('pointerleave',()=>{voPaused=false;voT0=performance.now()-(+$$('button',voBar)[vo].style.getPropertyValue('--k')||0)*VO_MS});
+let voVisible=false;new IntersectionObserver(es=>{voVisible=es[0].isIntersecting;if(voVisible)voT0=performance.now()}).observe(voStage);
+goVo(0);
+if(!reduce)(function tick(n){if(voVisible&&!voPaused&&drawer.hidden){const k=clamp((n-voT0)/VO_MS);$$('button',voBar)[vo].style.setProperty('--k',k);if(k>=1)goVo(vo+1)}requestAnimationFrame(tick)})(performance.now());
+// swipe on touch
+(()=>{let sx=null;voStage.addEventListener('touchstart',e=>sx=e.touches[0].clientX,{passive:true});voStage.addEventListener('touchend',e=>{if(sx==null)return;const dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>40)goVo(vo+(dx<0?1:-1));sx=null})})();
+
+/* ================= Teacher ================= */
+const tl=$('#timeline');TIMELINE.forEach(([y,t,s],i)=>{const li=document.createElement('li');if(i>=6)li.className='x';li.innerHTML=`<b>${y}</b><span>${t}${s?`<small>${s}</small>`:''}</span>`;tl.appendChild(li)});
+$('#tlMore').onclick=e=>{const all=tl.classList.toggle('all');e.currentTarget.textContent=all?'Kevesebb':'Összes képzés'};
+
+/* ================= Courses ================= */
+const coGrid=$('#coGrid');COURSES.forEach(c=>{const d=document.createElement('article');d.className='co fade'+(c.feat?' feat':'');d.innerHTML=`<div><span class="tag">${c.tag}</span><h3>${c.t}</h3><p>${c.text}</p></div><div class="bt"><b>${c.price?fmt(c.price):'Érdeklődj'}</b><button type="button" data-course="${c.id}">${c.price?'Megrendelem':'Érdeklődöm'} ${ARR}</button></div>`;coGrid.appendChild(d)});
+
+/* ================= Practical ================= */
+const QA=[
+  ['Hogyan készüljek egy kezelésre?','<p>Mindig józanul, tudatmódosítóktól mentesen érkezz. A medicina-szertartásokra (Kambo, Rapé) böjtölve, koffein- és alkoholmentesen gyere. A Sananga előtt vedd ki a kontaktlencsét, és kerüld a sok szemfestéket. A szertartás utánra lehetőleg ne tervezz megerőltető programot.</p>'],
+  ['Kinek nem ajánlott a Kambo?',`<p>A Kambo az alábbi esetekben nem biztonságos. Ha bármelyik érint, vagy nem vagy biztos benne, foglalás előtt beszéljünk.</p><ul>${HEALTH.kambo.map(x=>`<li>${x}</li>`).join('')}</ul>`],
+  ['Kinek nem ajánlott a transzlégzés és a hangtál?',`<p><b>Transzlégzés:</b> ${HEALTH.breath.join(', ').toLowerCase()}.</p><p><b>Hangtálas kezelés:</b> ${HEALTH.sound.join(', ').toLowerCase()}.</p><p>A lélekvisszahívásnak, a transzgenerációs oldásnak és a magán jógaórának nincs ellenjavallata.</p>`],
+  ['Hogyan fizethetek?','<p>Az egyéni kezeléseket a helyszínen, készpénzben lehet fizetni. Csoportos programoknál a díjat vagy az előleget átutalással (Szücs Gábor EV, Unicredit Bank, 10918001-00000059-06810009) vagy Revoluton (@jogasaman) kérjük, a megjegyzésben a program címével. A számlát e-mailben küldjük.</p>'],
+  ['Mi a lemondási feltétel?','<p>Egyéni kezelésnél, ha a közösen egyeztetett időpontot 48 órán belül mondod le, a díj felét, 24 órán belül a teljes díjat kell kifizetni. A befizetett összegeket nem tudjuk visszatéríteni, csak a szolgáltatás megszűnése esetén. Csoportos programra szóló jegyedet névváltoztatással átadhatod egy ismerősödnek.</p>'],
+  ['Hol vannak a kezelések?','<p>A Nomád Jóga stúdióban, 1033 Budapest, Szérűskert u. 33. Egyes csoportos programok más helyszínen vannak, ezt mindig jelöljük az eseménynél.</p>']
+];
+$('#qa').innerHTML=QA.map(([q,a])=>`<details><summary>${q}<i aria-hidden="true"></i></summary><div class="a">${a}</div></details>`).join('');
+
+/* ================= Booking drawer ================= */
+const drawer=$('#drawer'),scrim=$('#scrim'),body=$('#drBody'),foot=$('#drFoot'),stepsEl=$('#drSteps');
+let B=null,lastFocus=null;
+const F={name:'',email:'',phone:'',note:'',agree:false,health:'ok',pay:'transfer',count:1};
+function open(state){
+  B=state;B.step=0;lastFocus=document.activeElement;
+  scrim.hidden=false;drawer.hidden=false;requestAnimationFrame(()=>{scrim.classList.add('open');drawer.classList.add('open')});
+  document.body.style.overflow='hidden';$('#mbar').classList.remove('show');paint();
+  setTimeout(()=>{const f=drawer.querySelector('input:checked,input,button.btn');f&&f.focus({preventScroll:true})},reduce?0:450);
+}
+function close(){scrim.classList.remove('open');drawer.classList.remove('open');document.body.style.overflow='';setTimeout(()=>{scrim.hidden=true;drawer.hidden=true;onScroll()},reduce?0:900);lastFocus&&lastFocus.focus&&lastFocus.focus()}
+$('#drClose').onclick=close;scrim.onclick=close;
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){if(!drawer.hidden)close();else if(menu.classList.contains('open'))burger.click()}});
+drawer.addEventListener('keydown',e=>{if(e.key!=='Tab')return;const f=$$('button,input,select,textarea,a[href]',drawer).filter(x=>!x.disabled&&x.offsetParent!==null);if(!f.length)return;if(e.shiftKey&&document.activeElement===f[0]){e.preventDefault();f[f.length-1].focus()}else if(!e.shiftKey&&document.activeElement===f[f.length-1]){e.preventDefault();f[0].focus()}});
+document.addEventListener('click',e=>{
+  const b=e.target.closest('[data-book],[data-event],[data-course]');if(!b)return;
+  if(b.dataset.event!=null){open({mode:'event',ev:EVENTS.find(x=>x.id===b.dataset.event)});return}
+  if(b.dataset.course!=null){open({mode:'course',co:COURSES.find(x=>x.id===b.dataset.course)});return}
+  const s=SERVICES.find(x=>x.id===b.dataset.book);open({mode:'session',sv:s||null,variant:90,date:null,time:null,month:0});
+});
+const STEPS={session:['Kezelés','Időpont','Adatok','Kész'],event:['Jelentkezés','Adatok','Kész'],course:['Megrendelés','Kész']};
+
+/* availability (demo): weekday slots, some taken, seeded so it stays stable */
+function seeded(s){let h=2166136261;for(const c of s){h^=c.charCodeAt(0);h=Math.imul(h,16777619)}return((h>>>0)%1000)/1000}
+const SLOTS=['10:00','12:00','14:00','16:00','18:30'];
+function slotsOn(d){const dow=d.getDay();if(dow===0||dow===6)return[];const k=d.toISOString().slice(0,10);
+  return SLOTS.map(t=>{const r=seeded(k+t);const days=(d-today)/864e5;return{t,free:days>=1&&r>(days<5?.62:.38)&&!(dow===1&&t==='18:30')}})}
+const hasFree=d=>slotsOn(d).some(s=>s.free);
+
+function paint(){
+  const st=STEPS[B.mode];stepsEl.innerHTML=st.map((_,i)=>`<li class="${i<=B.step?'on':''}"></li>`).join('');
+  $('#drKicker').textContent=`${st[B.step]} · ${B.step+1}/${st.length}`;
+  ({session:paintSession,event:paintEvent,course:paintCourse})[B.mode]();
+}
+function healthBlock(key){
+  if(!key)return'';const L=HEALTH[key];
+  return`<h4>Egészségügyi kérdések</h4><div class="health"><p>A biztonságod miatt kérdezzük. Érint-e az alábbiak közül bármi?</p><ul>${L.map(x=>`<li>${x}</li>`).join('')}</ul>
+  <label class="opt" for="h-ok" style="margin:0"><input type="radio" name="h" id="h-ok" value="ok" ${F.health==='ok'?'checked':''}><b>Egyik sem érint</b><em></em></label>
+  <label class="opt" for="h-ask" style="margin:0"><input type="radio" name="h" id="h-ask" value="ask" ${F.health==='ask'?'checked':''}><b>Érint vagy bizonytalan vagyok</b><em></em><span>Ilyenkor nem foglalunk azonnal: Gauranga visszahív, és átbeszélitek.</span></label></div>`;
+}
+function bindHealth(){$$('input[name=h]',body).forEach(r=>r.onchange=()=>{F.health=r.value;paintFootOnly()})}
+function detailsBlock(withNote){
+  return`<div class="field"><label for="f-name">Teljes név</label><input id="f-name" autocomplete="name" value="${esc(F.name)}"><span class="err" id="e-name" hidden>Add meg a neved.</span></div>
+  <div class="field"><label for="f-email">E-mail cím</label><input id="f-email" type="email" inputmode="email" autocomplete="email" value="${esc(F.email)}"><span class="err" id="e-email" hidden>Ide küldjük a visszaigazolást, ezért egy működő címre van szükség.</span></div>
+  <div class="field"><label for="f-phone">Telefonszám</label><input id="f-phone" type="tel" autocomplete="tel" value="${esc(F.phone)}"><span class="err" id="e-phone" hidden>Telefonon egyeztetünk, kérjük a számodat.</span></div>
+  ${withNote?`<div class="field"><label for="f-note">Mivel szeretnél dolgozni? (nem kötelező)</label><textarea id="f-note">${esc(F.note)}</textarea></div>`:''}`;
+}
+function bindDetails(){[['f-name','name'],['f-email','email'],['f-phone','phone'],['f-note','note']].forEach(([id,k])=>{const el=$('#'+id);el&&el.addEventListener('input',()=>F[k]=el.value)});const a=$('#f-agree');a&&(a.onchange=()=>F.agree=a.checked)}
+function validate(needPhone){
+  const n=F.name.trim().length>1,m=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(F.email.trim()),p=!needPhone||F.phone.replace(/\D/g,'').length>=9,a=!$('#f-agree')||F.agree;
+  $('#e-name').hidden=n;$('#e-email').hidden=m;if($('#e-phone'))$('#e-phone').hidden=p;if($('#e-agree'))$('#e-agree').hidden=a;
+  if(!n){$('#f-name').focus();return false}if(!m){$('#f-email').focus();return false}if(!p){$('#f-phone').focus();return false}if(!a){$('#f-agree').focus();return false}return true;
+}
+function busy(btn,txt,fn){btn.disabled=true;btn.textContent=txt;setTimeout(fn,reduce?60:900)}
+const longDate=d=>`${d.getFullYear()}. ${MON[d.getMonth()]} ${d.getDate()}., ${DOW[d.getDay()]}`;
+const ticketSvg='<svg viewBox="0 0 200 200" aria-hidden="true"><g fill="none" stroke="#C2A46C" stroke-width="1"><circle cx="100" cy="100" r="96"/><circle cx="100" cy="100" r="70"/><circle cx="100" cy="100" r="44"/></g><circle cx="100" cy="100" r="12" fill="#D27A42"/></svg>';
+
+/* --- session --- */
+function priceOf(){const s=B.sv;if(!s)return 0;return s.price2&&B.variant===180?s.price2:s.price}
+function paintSession(){
+  const s=B.sv;
+  if(B.step===0){
+    body.innerHTML=`<h3 class="dr-title" id="drTitle">Melyik <em>kezelésre</em> érkezel?</h3><p class="dr-sub">Ha nem tudod eldönteni, válaszd az elsőt, vagy írd meg a következő lépésben, mi foglalkoztat.</p><h4>Egyéni kezelések</h4>`+
+      SERVICES.map(x=>`<label class="opt" for="sv-${x.id}"><input type="radio" name="sv" id="sv-${x.id}" value="${x.id}" ${s&&s.id===x.id?'checked':''}><b>${x.t}</b><em>${x.price2?fmt(x.price)+'-tól':fmt(x.price)}</em><span>${x.dur}${x.priceNote?', '+x.priceNote+' fizetve':''}</span></label>`).join('')+
+      (s&&s.price2?`<h4>Időtartam</h4><label class="opt" for="v90"><input type="radio" name="v" id="v90" value="90" ${B.variant===90?'checked':''}><b>90 perces szertartás</b><em>${fmt(s.price)}</em></label><label class="opt" for="v180"><input type="radio" name="v" id="v180" value="180" ${B.variant===180?'checked':''}><b>180 perces nagy szertartás</b><em>${fmt(s.price2)}</em><span>Rapé és Sananga alkalmazásával</span></label>`:'');
+    $$('input[name=sv]',body).forEach(r=>r.onchange=()=>{B.sv=SERVICES.find(x=>x.id===r.value);B.variant=90;paint();const c=$(`#sv-${r.value}`);c&&c.focus({preventScroll:true})});
+    $$('input[name=v]',body).forEach(r=>r.onchange=()=>{B.variant=+r.value;paintFootOnly()});
+  }
+  if(B.step===1){
+    const base=new Date(today.getFullYear(),today.getMonth()+B.month,1);
+    const first=(base.getDay()+6)%7,days=new Date(base.getFullYear(),base.getMonth()+1,0).getDate();
+    const limit=new Date(today);limit.setDate(limit.getDate()+56);
+    let cells='';for(let i=0;i<first;i++)cells+='<span></span>';
+    for(let d=1;d<=days;d++){const dt=new Date(base.getFullYear(),base.getMonth(),d);const ok=dt>today&&dt<=limit&&hasFree(dt);const sel=B.date&&dt.getTime()===B.date.getTime();cells+=`<button type="button" class="${ok?'av':''}" ${ok?'':'disabled'} aria-pressed="${sel}" data-d="${d}" aria-label="${longDate(dt)}${ok?'':', nincs szabad időpont'}">${d}</button>`}
+    const sl=B.date?slotsOn(B.date):[];
+    body.innerHTML=`<h3 class="dr-title" id="drTitle">Mikor <em>érkezel?</em></h3><p class="dr-sub">${s.t}, ${s.price2&&B.variant===180?'180':'90'} perc. A pöttyel jelölt napokon van szabad időpont.</p>
+      <h4>Nap</h4><div class="cal-head"><b>${base.toLocaleDateString('hu-HU',{year:'numeric',month:'long'})}</b><div class="nav2"><button type="button" id="mPrev" aria-label="Előző hónap" ${B.month<=0?'disabled':''}><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M10 3L5 8l5 5"/></svg></button><button type="button" id="mNext" aria-label="Következő hónap" ${B.month>=1?'disabled':''}><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M6 3l5 5-5 5"/></svg></button></div></div>
+      <div class="cal"><span class="dw">H</span><span class="dw">K</span><span class="dw">Sze</span><span class="dw">Cs</span><span class="dw">P</span><span class="dw">Szo</span><span class="dw">V</span>${cells}</div>
+      <h4>Időpont</h4>${B.date?`<div class="times">${sl.map(x=>`<button type="button" ${x.free?'':'disabled'} aria-pressed="${B.time===x.t}" data-t="${x.t}">${x.t}</button>`).join('')}</div>`:'<p class="times-empty">Előbb válassz napot.</p>'}`;
+    $('#mPrev').onclick=()=>{B.month--;paint()};$('#mNext').onclick=()=>{B.month++;paint()};
+    $$('.cal button.av',body).forEach(b=>b.onclick=()=>{B.date=new Date(base.getFullYear(),base.getMonth(),+b.dataset.d);B.time=null;paint();const t=$('.times button:not(:disabled)',body);t&&t.focus({preventScroll:true})});
+    $$('.times button',body).forEach(b=>b.onclick=()=>{B.time=b.dataset.t;$$('.times button',body).forEach(x=>x.setAttribute('aria-pressed',x===b));paintFootOnly()});
+  }
+  if(B.step===2){
+    body.innerHTML=`<h3 class="dr-title" id="drTitle">Néhány <em>adat</em></h3><p class="dr-sub">${s.t} · ${longDate(B.date)}, ${B.time}</p>${healthBlock(s.health)}<h4>Elérhetőség</h4>${detailsBlock(true)}
+      <label class="check" for="f-agree"><input type="checkbox" id="f-agree" ${F.agree?'checked':''}><span>Elfogadom az adatkezelési szabályzatot és a lemondási feltételeket: 48 órán belüli lemondásnál a díj fele, 24 órán belül a teljes díj fizetendő.</span></label><span class="err" id="e-agree" hidden>A foglaláshoz fogadd el a feltételeket.</span>`;
+    bindHealth();bindDetails();
+  }
+  if(B.step===3){
+    const ask=s.health&&F.health==='ask';
+    body.innerHTML=`<div class="ticket"><div class="top">${ticketSvg}<small>${ask?'Visszahívást kértél':'Időpontod lefoglalva'}</small><h3 id="drTitle">${s.t}</h3></div>
+      <dl><dt>Időpont</dt><dd>${longDate(B.date)}, ${B.time}${ask?' (egyeztetés után)':''}</dd><dt>Időtartam</dt><dd>${s.price2&&B.variant===180?'180':'90'} perc</dd><dt>Helyszín</dt><dd>${NOMAD}</dd><dt>Díj</dt><dd>${fmt(priceOf())}, a helyszínen készpénzben</dd></dl>
+      <div class="perf"></div><dl><dt>Név</dt><dd>${esc(F.name)}</dd><dt>Visszaigazolás</dt><dd>${esc(F.email)}</dd></dl></div>
+      <div class="next-steps">${ask?`<p><b>Mi következik?</b> Mivel jelezted, hogy érint valamelyik ellenjavallat, Gauranga 24 órán belül felhív a <b>${esc(F.phone)}</b> számon, és közösen eldöntitek, biztonságos-e a kezelés, vagy milyen másik út illik hozzád.</p>`:`<p><b>Hogyan készülj?</b> ${s.id==='kambo'||s.id==='rape'?'Érkezz böjtölve, koffein- és alkoholmentesen. ':''}Mindig józanul, tudatmódosítóktól mentesen érkezz, 10 perccel korábban.</p>`}
+      <p>Kérdésed van? Hívj vagy írj WhatsAppon: <code>06 30 914 0839</code></p></div>
+      <p class="demo">Bemutató változat: a foglalás nem kerül elküldésre, e-mailt nem küldünk.</p>`;
+  }
+  paintFootOnly();
+}
+/* --- event --- */
+function paintEvent(){
+  const e=B.ev,s=seatInfo(e),full=s&&s.free===0;
+  if(B.step===0){
+    const max=s?Math.min(4,Math.max(1,s.free)):4;F.count=Math.min(F.count,max);
+    body.innerHTML=`<h3 class="dr-title" id="drTitle">${e.t}</h3><p class="dr-sub">${longDate(P(e.d))}${e.d2?' – '+longDate(P(e.d2)):''} · ${e.time}<br>${e.where}</p>
+      <h4>Létszám</h4><div class="opt" style="cursor:default;grid-template-columns:1fr auto"><div><b>${full?'Várólistára jelentkezem':'Hány főre jelentkezel?'}</b><span style="display:block;color:var(--bone-3);font-size:.82rem">${s?evStatus(e):'Jelentkezés nyitva'}</span></div>
+      <div style="display:flex;align-items:center;gap:12px"><button class="circ" type="button" id="cMinus" aria-label="Kevesebb fő" style="width:38px;height:38px">−</button><b id="cNum" style="font-family:var(--f-display);font-size:1.6rem;min-width:1.2em;text-align:center">${F.count}</b><button class="circ" type="button" id="cPlus" aria-label="Több fő" style="width:38px;height:38px">+</button></div></div>
+      ${e.price?`<h4>Fizetés</h4><label class="opt" for="pay-t"><input type="radio" name="pay" id="pay-t" value="transfer" ${F.pay==='transfer'?'checked':''}><b>Banki átutalás</b><em></em><span>Szücs Gábor EV, Unicredit Bank</span></label><label class="opt" for="pay-r"><input type="radio" name="pay" id="pay-r" value="revolut" ${F.pay==='revolut'?'checked':''}><b>Revolut</b><em></em><span>@jogasaman</span></label>`:''}
+      ${healthBlock(e.health)}`;
+    $('#cMinus').onclick=()=>{F.count=Math.max(1,F.count-1);$('#cNum').textContent=F.count;paintFootOnly()};
+    $('#cPlus').onclick=()=>{F.count=Math.min(max,F.count+1);$('#cNum').textContent=F.count;paintFootOnly()};
+    $$('input[name=pay]',body).forEach(r=>r.onchange=()=>F.pay=r.value);bindHealth();
+  }
+  if(B.step===1){
+    body.innerHTML=`<h3 class="dr-title" id="drTitle">Kinek <em>foglaljuk?</em></h3><p class="dr-sub">${e.t} · ${F.count} fő</p><h4>Elérhetőség</h4>${detailsBlock(false)}
+      <label class="check" for="f-agree"><input type="checkbox" id="f-agree" ${F.agree?'checked':''}><span>Elfogadom az adatkezelési szabályzatot. Tudom, hogy a befizetett díj és előleg nem téríthető vissza, de a jegyemet névváltoztatással átadhatom.</span></label><span class="err" id="e-agree" hidden>A jelentkezéshez fogadd el a feltételeket.</span>`;
+    bindDetails();
+  }
+  if(B.step===2){
+    const due=e.deposit?e.deposit*F.count:(e.price||0)*F.count;const ref=`${e.t} – ${F.name.trim()}`;
+    body.innerHTML=`<div class="ticket"><div class="top">${ticketSvg}<small>${full?'Felírtunk a várólistára':'Jelentkezésed rögzítve'}</small><h3 id="drTitle">${e.t}</h3></div>
+      <dl><dt>Időpont</dt><dd>${longDate(P(e.d))}${e.d2?' – '+longDate(P(e.d2)):''}, ${e.time}</dd><dt>Helyszín</dt><dd>${e.where}</dd><dt>Létszám</dt><dd>${F.count} fő</dd>${e.price?`<dt>${e.deposit?'Utalandó előleg':'Utalandó'}</dt><dd>${fmt(due)}</dd>`:''}</dl></div>
+      <div class="next-steps">${full?'<p>Ha felszabadul egy hely, e-mailben és telefonon értesítünk.</p>':e.price?`<p><b>A foglalásod az utalás beérkezésével válik teljessé.</b> ${F.pay==='revolut'?'Revolut azonosító: <code>@jogasaman</code>':'Számlaszám: <code>10918001-00000059-06810009</code> (Szücs Gábor EV, Unicredit)'}</p><p>Közlemény: <code>${esc(ref)}</code></p><p>Az utalás igazolását küldd el a <code>jogasaman@gmail.com</code> címre, a számlát e-mailben kapod.</p>`:'<p>A részletes programot, a díjat és a felkészülési tudnivalókat e-mailben küldjük el.</p>'}</div>
+      <p class="demo">Bemutató változat: a jelentkezés nem kerül elküldésre.</p>`;
+  }
+  paintFootOnly();
+}
+/* --- course --- */
+function paintCourse(){
+  const c=B.co;
+  if(B.step===0){body.innerHTML=`<h3 class="dr-title" id="drTitle">${c.t}</h3><p class="dr-sub">${c.tag}</p><p style="margin-top:18px;color:var(--bone-2)">${c.text}</p><h4>Hová küldjük?</h4>${detailsBlock(false).replace(/<div class="field"><label for="f-phone">[\s\S]*?<\/div>/,'')}`;bindDetails()}
+  if(B.step===1){body.innerHTML=`<div class="ticket"><div class="top">${ticketSvg}<small>${c.price?'Megrendelés rögzítve':'Érdeklődés elküldve'}</small><h3 id="drTitle">${c.t}</h3></div><dl><dt>Ár</dt><dd>${c.price?fmt(c.price):'Gauranga e-mailben válaszol'}</dd><dt>E-mail</dt><dd>${esc(F.email)}</dd></dl></div>
+    <div class="next-steps">${c.price?`<p><b>Utalás után</b> e-mailben kapod a letöltési linkeket${c.id==='astro'?', a Navaratna-medált pedig postán':''}.</p><p>Számlaszám: <code>10918001-00000059-06810009</code> · Revolut: <code>@jogasaman</code></p><p>Közlemény: <code>${esc(c.t)}</code></p>`:'<p>Gauranga hamarosan válaszol az árral és a részletekkel.</p>'}</div><p class="demo">Bemutató változat: a megrendelés nem kerül elküldésre.</p>`}
+  paintFootOnly();
+}
+function paintFootOnly(){
+  const back=`<button class="back" type="button" id="bk">Vissza</button>`;
+  if(B.mode==='session'){
+    const s=B.sv;
+    if(B.step===0){foot.innerHTML=`<div class="sum">Fizetendő a helyszínen<b>${s?fmt(priceOf()):'–'}</b></div><button class="btn btn-ember" type="button" id="go" ${s?'':'disabled'}>Tovább az időpontokhoz</button>`;$('#go').onclick=()=>{B.step=1;if(!B.date){const d=new Date(today);for(let i=1;i<60;i++){d.setDate(d.getDate()+1);if(hasFree(d)){B.month=(d.getFullYear()-today.getFullYear())*12+d.getMonth()-today.getMonth();break}}}paint()}}
+    if(B.step===1){foot.innerHTML=`${back}<button class="btn btn-ember" type="button" id="go" ${B.date&&B.time?'':'disabled'}>Tovább</button>`;$('#bk').onclick=()=>{B.step=0;paint()};$('#go').onclick=()=>{B.step=2;paint();$('#f-name')&&!s.health&&$('#f-name').focus()}}
+    if(B.step===2){const ask=s.health&&F.health==='ask';foot.innerHTML=`${back}<button class="btn btn-ember" type="button" id="go">${ask?'Visszahívást kérek':'Időpont lefoglalása'}</button>`;$('#bk').onclick=()=>{B.step=1;paint()};$('#go').onclick=e=>{if(!validate(true))return;busy(e.currentTarget,'Foglalás…',()=>{B.step=3;paint();body.scrollTop=0;$('#go').focus()})}}
+    if(B.step===3){foot.innerHTML=`<button class="btn btn-ink-ring" type="button" id="go" style="margin-left:auto;color:var(--bone);box-shadow:inset 0 0 0 1px var(--line)">Bezárás</button>`;$('#go').onclick=close}
+  }
+  if(B.mode==='event'){
+    const e=B.ev,s=seatInfo(e),full=s&&s.free===0,ask=e.health&&F.health==='ask';
+    if(B.step===0){const amt=(e.deposit||e.price||0)*F.count;foot.innerHTML=`<div class="sum">${e.price?(e.deposit?'Utalandó előleg':'Utalandó'):'Díj'}<b>${e.price?fmt(amt):'Jelentkezéskor'}</b></div><button class="btn btn-ember" type="button" id="go">${ask?'Előbb egyeztetnék':'Tovább'}</button>`;
+      $('#go').onclick=()=>{if(ask){close();toast('Hívd Gaurangát: 06 30 914 0839');return}B.step=1;paint();$('#f-name').focus()}}
+    if(B.step===1){foot.innerHTML=`${back}<button class="btn btn-ember" type="button" id="go">${full?'Felírás a várólistára':'Jelentkezés elküldése'}</button>`;$('#bk').onclick=()=>{B.step=0;paint()};$('#go').onclick=ev=>{if(!validate(true))return;busy(ev.currentTarget,'Küldés…',()=>{B.step=2;paint();body.scrollTop=0;$('#go').focus()})}}
+    if(B.step===2){foot.innerHTML=`<button class="btn" type="button" id="go" style="margin-left:auto;color:var(--bone);box-shadow:inset 0 0 0 1px var(--line)">Bezárás</button>`;$('#go').onclick=close}
+  }
+  if(B.mode==='course'){
+    if(B.step===0){foot.innerHTML=`<div class="sum">Ár<b>${B.co.price?fmt(B.co.price):'Érdeklődj'}</b></div><button class="btn btn-ember" type="button" id="go">${B.co.price?'Megrendelem':'Elküldöm'}</button>`;$('#go').onclick=ev=>{if(!validate(false))return;busy(ev.currentTarget,'Küldés…',()=>{B.step=1;paint();$('#go').focus()})}}
+    if(B.step===1){foot.innerHTML=`<button class="btn" type="button" id="go" style="margin-left:auto;color:var(--bone);box-shadow:inset 0 0 0 1px var(--line)">Bezárás</button>`;$('#go').onclick=close}
+  }
+}
+
+/* ================= Small things ================= */
+const tEl=$('#toast');let tt;function toast(m){tEl.textContent=m;tEl.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>tEl.classList.remove('show'),2600)}
+$$('[data-copy]').forEach(b=>b.onclick=()=>{const v=b.dataset.copy;const fb=()=>{const r=document.createRange();r.selectNodeContents(b.previousElementSibling);const s=getSelection();s.removeAllRanges();s.addRange(r);toast('Kijelölve, másold ki')};try{navigator.clipboard.writeText(v).then(()=>toast('Kimásolva: '+v),fb)}catch(e){fb()}});
+watch();onScroll();
+})();
+</script>
+
+</body>
+</html>
